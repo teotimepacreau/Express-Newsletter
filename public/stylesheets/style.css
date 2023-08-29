@@ -1,0 +1,184 @@
+/* CSS RESET */
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Remove default list styles */
+ul, ol, li {
+  list-style: none;
+}
+
+/* Set core body defaults */
+body {
+  text-rendering: optimizeLegibility;
+}    
+
+/* Set core root defaults */
+html {
+  scroll-behavior: smooth;
+}
+    
+/* A element that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+    
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%; /* img should never overflow past the available space*/
+  display: block; /* avoid blank bottom*/
+  height: auto;/*preserve aspect ratio*/
+}
+
+/* More consistent, styleable hr*/
+hr {
+  border-width: 1px 0 0 0;
+  color: inherit;
+  height: 0;
+  overflow: visible;
+}
+
+/* Remove built-in form typography styles */
+input, button, textarea, select {
+  font: inherit;
+  color: inherit;
+}
+
+/* More space above the underline */
+a {
+  text-underline-offset: 0.2ex;
+}
+
+:root {
+  --bg: oklch(9% 0.4 37);
+  --bgshadow: oklch(9% 0.4 37 / 30%);
+  --body: oklch(99% 0.01 37);
+  --rythme: 1rlh;
+}
+body{
+  font-family: "LibreCaslonCondensed-Regular";
+  background-color: var(--bg);
+  color: var(--body);
+}
+
+.container {
+  margin: calc(3*var(--rythme));
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(3*var(--rythme));
+}
+
+.container > * {
+  flex: 1 1 500px;
+}
+
+@font-face {
+  font-family: "LibreCaslonCondensed-Regular";
+  src: local("LibreCaslonCondensed-Regular"),
+  url("../fonts/LibreCaslonCondensed-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "LibreCaslonCondensed-Italic";
+  src: local("LibreCaslonCondensed-Italic"),
+  url("../fonts/LibreCaslonCondensed-Italic.woff2") format("woff2");
+}
+
+h1 {
+  font-size: 6rem;
+  font-family: "LibreCaslonCondensed-Regular", serif;
+  line-height: 1.4;
+  font-weight: 100;
+  letter-spacing: -0.02rem;
+}
+
+span {
+  font-family: "LibreCaslonCondensed-Italic", serif;
+}
+
+form {
+  width: clamp(300px, 60% - 5vw ,60%);
+  margin-inline: auto;
+  font-family: 'Syne', sans-serif;
+  font-weight: 100;
+  background-color: var(--body);
+  color: var(--bg);
+  padding-block: calc(2*var(--rythme));
+  padding-inline: calc(1.2*var(--rythme));
+  border-radius: 0.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: calc(2*var(--rythme));
+  box-shadow: -1px 1px 4px 2px rgba(239, 239, 239, 0.434);
+}
+
+form > * {
+  display: flex;
+  flex-direction: column;
+  gap: calc(0.1*var(--rythme));
+}
+
+label {
+  font-size: 1.3rem;
+  font-weight: 100;
+  letter-spacing: -0.02rem;
+}
+input {
+  padding: 0.4ex 0.9ex;
+  border-radius: 0.2rem;
+  border: 0.01rem solid var(--bg);
+  background-color: rgb(255, 250, 248);
+}
+
+input:focus, textarea:focus, select:focus{
+  outline-width: 0.1ex;
+  outline-style: ridge;/*follow the border without white px*/
+  outline-color: var(--bg);
+}
+
+#submit-btn{
+  box-shadow: -1px 1px 4px 2px var(--bgshadow);
+  display: flex;
+  flex-wrap: nowrap;
+  font-family: "LibreCaslonCondensed-Regular";
+  font-size: 2rem;
+  background-color: var(--bg);
+  color: var(--body);
+  font-weight: 100;
+  min-width: calc(0.5*var(--rythme));
+  cursor: pointer;
+  border: 0.1ex solid;
+  border-color: transparent;
+  padding: 1ex 2ex;/*hauteur des minuscules souvent appelée hauteur "x" lowercase*/
+  border-radius: 0.6rem;
+  transition: color 0.6s ease-out;
+}
+#submit-btn > *{
+  margin-left: auto;
+}
+
+#submit-btn p {
+  font-weight: 600;
+}
+#submit-btn:hover {
+  background-color: var(--body);
+  color: var(--bg);
+  border-color: var(--bg);
+}
+
+button:focus {
+  outline-offset: 4px;
+  outline-width: 0.4ex;
+  outline-style: solid;
+  outline-color: var(--bg);
+}
+
+i:hover{
+  color: var(--accent);
+}
