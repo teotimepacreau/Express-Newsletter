@@ -3,7 +3,7 @@
         <h1>The <span>Newsletter</span> of JJJJound</h1>
     </section>
     <section class="subrisribe-right">
-        <form id="myForm" method="post" action="/subscribe">
+        <form id="myForm" method="POST" action="/subscribe">
             <div class="lastname">
                 <label for="lastname">Lastname</label>
                 <input autocomplete="on" type="text" id="form-lastname" name="lastname" required>
@@ -14,10 +14,11 @@
             </div>
             <div class="email">
                 <label for="email">E-mail</label>
-                <input type="email" id="form-email" name="email" required>
+                <input autocomplete="on" type="email" id="form-email" name="email" required>
             </div>
             <button type="submit" id="submit-btn"><p>Join</p><span>Newsletter</span></button>
-        </form>
+</form>
+
     </section>
 </div>
 

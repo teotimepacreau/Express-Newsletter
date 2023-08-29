@@ -45,10 +45,9 @@ const createdb = async () => {
     
     await db.exec(`
       CREATE TABLE IF NOT EXISTS subscribers (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        email TEXT NOT NULL UNIQUE
-      )
-    `);
+        id INTEGER PRIMARY KEY AUTO_INCREMENT,
+        email TEXT,
+      )`);
 
     console.log('Database initialized.');
     // Close the database connection

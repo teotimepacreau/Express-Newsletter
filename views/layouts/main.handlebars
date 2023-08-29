@@ -14,5 +14,36 @@
 </head>
 <body>
     {{{ body }}}
+    <script>
+  // This script will be executed when the form is submitted
+  document.getElementById('myForm').addEventListener('submit', async function(event) {
+    event.preventDefault();
+
+    const data = {
+        email: document.getElementById('form-email').value
+    };
+    console.log('Form data:', data);
+
+    try {
+      const response = await fetch('/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+
+      if (response.ok) {
+        // Handle success, e.g., show a success message
+        console.log('Subscribed successfully');
+      } else {
+        // Handle error, e.g., show an error message
+        console.error('Error subscribing:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  });
+</script>
 </body>
 </html>
