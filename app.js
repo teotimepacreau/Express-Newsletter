@@ -35,9 +35,7 @@ app.use("/subscribe", subscribeRouter);
 //CREATION DE LA DB
 const createdb = async () => {
   const dbPath = path.join(__dirname, 'database.db');
-
-  // Check if the database file already exists
-  if (!fs.existsSync(dbPath)) {
+try{
     let db = await open({
       filename: dbPath,
       driver: sqlite3.Database
@@ -50,13 +48,26 @@ const createdb = async () => {
         firstname TEXT,
         lastname TEXT
       )`);
-
-    console.log('Database initialized.');
-    // Close the database connection
-    await db.close();
-  } else {
-    console.log('Database already exists.');
-  }
-  
+      return db//permet d'y accéder dans la fonction d'en dessous
+    }catch(err){
+      console.error(err)
+    }
 };
 createdb()
+
+// ACCEDER A LA BDD après ouverture
+/*
+async function main() {
+  const db = await createdb();
+
+  try {
+    const result = await db.get(`SELECT * FROM subscribers`);
+    console.log(result);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+// Call the main function to start the process
+main();
+*/

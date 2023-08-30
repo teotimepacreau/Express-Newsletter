@@ -2,6 +2,7 @@ const router = require("express").Router()
 const path = require("path")
 const sqlite3 = require("sqlite3")
 const { open } = require("sqlite")
+const { subscribe } = require("diagnostics_channel")
 
 router.get('/', (req, res)=>{
     res.render('subscribe', {
@@ -25,12 +26,11 @@ router.post('/', async (req, res)=>{
             INSERT INTO subscribers (email, firstname, lastname) VALUES (?, ?, ?)
         `, email, firstname, lastname);
         res.status(201).json({message: "Subscribed successfully"})
-        console.log("Record inserted:", email); // Debug line
+        console.log("Record inserted:", email, firstname, lastname); // Debug line
     }catch(err){
         console.error("Error inserting record:", err); // Debug line
         res.status(400).json({error: 'Email already exists'})
     }
 })
-
 
 module.exports = router
