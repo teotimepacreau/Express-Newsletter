@@ -8,10 +8,12 @@ router.get('/', (req, res)=>{
         title: "Subscribe"
     })//render home.handlebars
 })
-// récupération du mail
+// récupération de la request formulaire qui n'est plus en JSON grpace au middleware
 router.post('/', async (req, res)=>{
     const email = req.body.email
-    console.log('email received', email)
+    const firstname = req.body.firstname
+    const lastname = req.body.lastname
+    console.log('received data', typeof req.body, req.body)
 
     let db = await open({
         filename: path.join(__dirname, "..", "database.db"),
@@ -20,8 +22,8 @@ router.post('/', async (req, res)=>{
 
     try{
         await db.run(`
-            INSERT INTO subscribers (email) VALUES (?)
-        `, email);
+            INSERT INTO subscribers (email, firstname, lastname) VALUES (?, ?, ?)
+        `, email, firstname, lastname);
         res.status(201).json({message: "Subscribed successfully"})
         console.log("Record inserted:", email); // Debug line
     }catch(err){
