@@ -56,19 +56,21 @@ a {
 }
 
 :root {
-  --bg: oklch(9% 0.4 37);
+  --bg10: oklch(10% 0.4 37);
+  --bg30: oklch(85% 0.1 37);
   --bgshadow: oklch(9% 0.4 37 / 30%);
-  --body: oklch(99% 0.01 37);
+  --body: oklch(95% 0.03 37);
   --rythme: 1rlh;
 }
 body{
   font-family: "LibreCaslonCondensed-Regular";
-  background-color: var(--bg);
+  background-color: var(--bg10);
   color: var(--body);
+  min-height: 100%;
 }
 
 .container {
-  margin: calc(3*var(--rythme));
+  padding: calc(3*var(--rythme));
   display: flex;
   flex-wrap: wrap;
   gap: calc(3*var(--rythme));
@@ -98,7 +100,7 @@ h1 {
   letter-spacing: -0.02rem;
 }
 
-span {
+.italic-letters {
   font-family: "LibreCaslonCondensed-Italic", serif;
 }
 
@@ -108,14 +110,14 @@ form {
   font-family: 'Syne', sans-serif;
   font-weight: 100;
   background-color: var(--body);
-  color: var(--bg);
+  color: var(--bg10);
   padding-block: calc(2*var(--rythme));
   padding-inline: calc(1.2*var(--rythme));
   border-radius: 0.3rem;
   display: flex;
   flex-direction: column;
   gap: calc(2*var(--rythme));
-  box-shadow: -1px 1px 4px 2px rgba(239, 239, 239, 0.434);
+  box-shadow: -2px 2px 4px 4px var(--bgshadow);
 }
 
 form > * {
@@ -132,14 +134,14 @@ label {
 input {
   padding: 0.4ex 0.9ex;
   border-radius: 0.2rem;
-  border: 0.01rem solid var(--bg);
+  border: 0.01rem solid var(--bg10);
   background-color: rgb(255, 250, 248);
 }
 
 input:focus, textarea:focus, select:focus{
   outline-width: 0.1ex;
   outline-style: ridge;/*follow the border without white px*/
-  outline-color: var(--bg);
+  outline-color: var(--bg10);
 }
 
 #submit-btn{
@@ -148,7 +150,7 @@ input:focus, textarea:focus, select:focus{
   flex-wrap: nowrap;
   font-family: "LibreCaslonCondensed-Regular";
   font-size: 2rem;
-  background-color: var(--bg);
+  background-color: var(--bg10);
   color: var(--body);
   font-weight: 100;
   min-width: calc(0.5*var(--rythme));
@@ -157,7 +159,7 @@ input:focus, textarea:focus, select:focus{
   border-color: transparent;
   padding: 1ex 2ex;/*hauteur des minuscules souvent appelée hauteur "x" lowercase*/
   border-radius: 0.6rem;
-  transition: color 0.6s ease-out;
+  transition: all 0.4s ease-out;
 }
 #submit-btn > *{
   margin-left: auto;
@@ -168,17 +170,52 @@ input:focus, textarea:focus, select:focus{
 }
 #submit-btn:hover {
   background-color: var(--body);
-  color: var(--bg);
-  border-color: var(--bg);
+  color: var(--bg10);
+  border-color: var(--body);
 }
 
 button:focus {
   outline-offset: 4px;
   outline-width: 0.4ex;
   outline-style: solid;
-  outline-color: var(--bg);
+  outline-color: var(--bg10);
 }
 
 i:hover{
   color: var(--accent);
+}
+
+/* NOTIF TO CONFIRM THAT USER HAS SUCCESSFULLY SENT FORM */
+.notif-subscribed-successfully {
+  display: flex;
+  align-items: center;
+  gap: 0.5ch;
+  background-color: var(--body);
+  color: var(--bg10);
+  position: absolute;
+  right: var(--rythme);
+  bottom: var(--rythme);
+  font-family: "Syne", sans-serif;
+  padding: calc(0.5*var(--rythme));
+  border-radius: 0.3rem;
+  animation: fade 0.6s ease-out;
+  box-shadow: -2px 2px 5px 0px var(--boxshadow);
+  transition: all 0.3s ease-out;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+    translate: 100px;
+    transform: scale(0.1);
+    filter: brightness(1.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.notif-subscribed-successfully i {
+  color: var(--bg10);
 }
