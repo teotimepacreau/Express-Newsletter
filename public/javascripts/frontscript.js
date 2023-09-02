@@ -24,21 +24,36 @@ document.getElementById('myForm').addEventListener('submit', async function(even
         console.log('Subscribed successfully');
 
         //send visual notif confirmation
-        const notification = document.createElement('div')
-        notification.innerHTML = `
+        const notificationSubscribePositive = document.createElement('div')
+        notificationSubscribePositive.innerHTML = `
         <i class="ph ph-check-circle"></i>
         <span>Subscribed successfully</span>
         `
-        notification.classList.add('notif-subscribed-successfully')
+        notificationSubscribePositive.classList.add('notif', 'subscribed-successfully')
+        notificationSubscribePositive.setAttribute("role", "alert")
         const container = document.querySelector('.container')
-        container.appendChild(notification)
+        container.appendChild(notificationSubscribePositive)
 
         setTimeout(()=>{
-            container.removeChild(notification)
+            container.removeChild(notificationSubscribePositive)
         }, 4000)
       } else {
         // Handle error, e.g., show an error message
         console.error('Error subscribing:', response.statusText);
+
+        //send visual notif "Email already exists"
+        const notifEmailAlreadyExists = document.createElement('div')
+        notifEmailAlreadyExists.innerHTML = `
+        <i class="ph ph-seal-warning"></i>
+        <span>Error : E-mail already added</span>
+        `
+        notifEmailAlreadyExists.classList.add('notif','email-already-exists')
+       notifEmailAlreadyExists.setAttribute("role", "alert")
+        const container = document.querySelector('.container')
+        container.appendChild(notifEmailAlreadyExists)
+        setTimeout(()=>{
+          container.removeChild(notifEmailAlreadyExists)
+      }, 4000)
       }
     } catch (error) {
       console.error('Error:', error);

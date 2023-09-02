@@ -57,9 +57,12 @@ a {
 
 :root {
   --bg10: oklch(10% 0.4 37);
-  --bg30: oklch(85% 0.1 37);
   --bgshadow: oklch(9% 0.4 37 / 30%);
   --body: oklch(95% 0.03 37);
+  --body98: oklch(90% 0.03 37);
+  --orange: oklch(70% 0.3 85);
+  --grey60: oklch(50% 0 0 / 60%);
+  --grey80: oklch(50% 0 0 / 80%);
   --rythme: 1rlh;
 }
 body{
@@ -114,13 +117,15 @@ form {
   padding-block: calc(2*var(--rythme));
   padding-inline: calc(1.2*var(--rythme));
   border-radius: 0.3rem;
-  display: flex;
-  flex-direction: column;
-  gap: calc(2*var(--rythme));
   box-shadow: -2px 2px 4px 4px var(--bgshadow);
 }
+.flex-wrapper{
+  display: flex;
+  flex-direction: column;
+  gap: var(--rythme);
+}
 
-form > * {
+.flex-wrapper > * {
   display: flex;
   flex-direction: column;
   gap: calc(0.1*var(--rythme));
@@ -141,7 +146,7 @@ input {
 input:focus, textarea:focus, select:focus{
   outline-width: 0.1ex;
   outline-style: ridge;/*follow the border without white px*/
-  outline-color: var(--bg10);
+  outline-color: var(--orange);
 }
 
 #submit-btn{
@@ -159,7 +164,7 @@ input:focus, textarea:focus, select:focus{
   border-color: transparent;
   padding: 1ex 2ex;/*hauteur des minuscules souvent appelée hauteur "x" lowercase*/
   border-radius: 0.6rem;
-  transition: all 0.4s ease-out;
+  transition: background-color 0.3s ease-out;
 }
 #submit-btn > *{
   margin-left: auto;
@@ -175,23 +180,33 @@ input:focus, textarea:focus, select:focus{
 }
 
 button:focus {
-  outline-offset: 4px;
-  outline-width: 0.4ex;
+  outline-width: 0.2ex;
   outline-style: solid;
-  outline-color: var(--bg10);
+  outline-color: var(--orange);
+  transition: all 0.3s ease-out;
 }
 
 i:hover{
   color: var(--accent);
 }
-
+#unsubscribe-link{
+  display: inline-block;
+  margin-top: calc(0.5*var(--rythme));
+  color: var(--grey60);
+  text-underline-offset: 0.4ex;
+}
+#unsubscribe-link:hover{
+  background-color: var(--body98);
+  padding: 0.5ex;
+  transition: all 0.3s ease-out;
+  border-radius: 0.3rem;
+  color: var(--grey80);
+}
 /* NOTIF TO CONFIRM THAT USER HAS SUCCESSFULLY SENT FORM */
-.notif-subscribed-successfully {
+.notif {
   display: flex;
   align-items: center;
   gap: 0.5ch;
-  background-color: var(--body);
-  color: var(--bg10);
   position: absolute;
   right: var(--rythme);
   bottom: var(--rythme);
@@ -201,6 +216,11 @@ i:hover{
   animation: fade 0.6s ease-out;
   box-shadow: -2px 2px 5px 0px var(--boxshadow);
   transition: all 0.3s ease-out;
+}
+
+.subscribed-successfully {
+  background-color: var(--body);
+  color: var(--bg10);
 }
 
 @keyframes fade {
@@ -216,6 +236,7 @@ i:hover{
   }
 }
 
-.notif-subscribed-successfully i {
-  color: var(--bg10);
+.email-already-exists {
+  background-color: var(--orange);
+  color: var(--body);
 }

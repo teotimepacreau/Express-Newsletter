@@ -44,9 +44,9 @@ try{
     await db.exec(`
       CREATE TABLE IF NOT EXISTS subscribers (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        email NVARCHAR(255) UNIQUE,
-        firstname TEXT,
-        lastname TEXT
+        email NVARCHAR(255) NOT NULL UNIQUE,
+        firstname TEXT NOT NULL,
+        lastname TEXT NOT NULL
       )`);
       return db//permet d'y accéder dans la fonction d'en dessous
     }catch(err){
