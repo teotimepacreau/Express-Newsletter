@@ -5,10 +5,16 @@
         <div id="unsubscribe-container-right">
             <h2>Are you sure you want to unsubscribe ? It's not the same without you...</h2>  
             <form id="unsubscribe-form" method="POST" action="/unsubscribe">
-                <label for="unsubscribe-email">E-mail</label>
-                <input autocomplete="on" type="email" id="unsubscribe-email" name="email" required>
-                <button type="submit" id="unsubscribe-btn"><span>Unsubscribe from</span><span class="italic-letters">Newsletter</span>
-                </button>
+                <div id="unsubscribe-email-section">
+                    <label for="unsubscribe-email">E-mail</label>
+                    <input autocomplete="on" type="email" id="unsubscribe-email" name="email" required>
+                    <button type="submit" id="unsubscribe-btn">
+                        <i class="ph ph-hand-waving"></i>
+                        <div class="inner-btn">
+                            <span>Unsubscribe from Newsletter</span>
+                        </div>
+                    </button>
+                </div>
             </form>
             <a id="unsubscribe-link" href="/subscribe">Go back to subscription page</a>
         </div>  
