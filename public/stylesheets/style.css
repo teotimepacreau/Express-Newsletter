@@ -74,12 +74,15 @@ body{
 
 .container {
   padding: calc(3*var(--rythme));
+}
+
+#subscribe-page {
   display: flex;
   flex-wrap: wrap;
   gap: calc(3*var(--rythme));
 }
 
-.container > * {
+#subscribe-page > * {
   flex: 1 1 500px;
 }
 
@@ -107,7 +110,7 @@ h1 {
   font-family: "LibreCaslonCondensed-Italic", serif;
 }
 
-form {
+#myForm {
   width: clamp(300px, 60% - 5vw ,60%);
   margin-inline: auto;
   font-family: 'Syne', sans-serif;
@@ -131,19 +134,19 @@ form {
   gap: calc(0.1*var(--rythme));
 }
 
-label {
-  font-size: 1.3rem;
+#myForm label {
+  font-size: 1.7rem;
   font-weight: 100;
   letter-spacing: -0.02rem;
 }
-input {
+#myForm input {
   padding: 0.4ex 0.9ex;
   border-radius: 0.2rem;
   border: 0.01rem solid var(--bg10);
   background-color: rgb(255, 250, 248);
 }
 
-input:focus, textarea:focus, select:focus{
+#myForm input:focus, textarea:focus, select:focus{
   outline-width: 0.1ex;
   outline-style: ridge;/*follow the border without white px*/
   outline-color: var(--orange);
@@ -239,4 +242,32 @@ i:hover{
 .email-already-exists {
   background-color: var(--orange);
   color: var(--body);
+}
+
+/* UNSUBCRIBE */
+#unsubscribe-container {
+  max-width: 50%;
+  margin-top: calc(3*var(--rythme));
+  padding: var(--rythme);
+  background-color: var(--body);
+  color: var(--bg10);
+  display: grid;
+  grid-template-columns: min-content auto;
+  column-gap: calc(3*var(--rythme));
+  font-family: "Syne", sans-serif;
+  border-radius: 0.3rem;
+}
+
+#unsubscribe-container .ph-envelope-open {
+  font-size: calc(8*var(--rythme));
+}
+
+#unsubscribe-container form {
+  grid-column: 2 / 3;
+}
+
+#unsubscribe-container-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }

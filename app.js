@@ -32,6 +32,10 @@ app.listen(port, ()=>{
 const subscribeRouter = require('./routes/subscribe.js');
 app.use("/subscribe", subscribeRouter);
 
+// UNSUBSCRIBE ROUTE
+const unsubscribeRouter = require('./routes/unsubscribe.js')
+app.use("/unsubscribe", unsubscribeRouter)
+
 //CREATION DE LA DB
 const createdb = async () => {
   const dbPath = path.join(__dirname, 'database.db');

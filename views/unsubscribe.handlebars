@@ -1,0 +1,16 @@
+<div class="container">
+    <h1>The <span class="italic-letters">Newsletter</span> of JJJJound</h1>
+    <div id="unsubscribe-container">
+        <i class="ph ph-envelope-open"></i>
+        <div id="unsubscribe-container-right">
+            <h2>Are you sure you want to unsubscribe ? It's not the same without you...</h2>  
+            <form id="unsubscribe-form" method="POST" action="/unsubscribe">
+                <label for="unsubscribe-email">E-mail</label>
+                <input autocomplete="on" type="email" id="unsubscribe-email" name="email" required>
+                <button type="submit" id="unsubscribe-btn"><span>Unsubscribe from</span><span class="italic-letters">Newsletter</span>
+                </button>
+            </form>
+            <a id="unsubscribe-link" href="/subscribe">Go back to subscription page</a>
+        </div>  
+    </div>
+</div>
