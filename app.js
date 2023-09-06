@@ -25,7 +25,7 @@ app.get('/', (req, res)=>{//page d'accueil renvoie par défaut vers /subscribe
 })
 
 app.listen(port, ()=>{
-  console.log(`serveur à l'écoute sur le port${port}`)
+  console.info(`serveur à l'écoute sur le port ${port}`)
 })
 
 // SUBSCRIBE ROUTE
@@ -36,15 +36,15 @@ app.use("/subscribe", subscribeRouter);
 const unsubscribeRouter = require('./routes/unsubscribe.js')
 app.use("/unsubscribe", unsubscribeRouter)
 
-//CREATION DE LA DB
-const createdb = async (req, res, next) => {
+//DB INIT
+const openDBandCreateTable = async () => {
+  // open DB : if there is no database.db it creates it
   const dbPath = path.join(__dirname, 'database.db');
-try{
     let db = await open({
       filename: dbPath,
       driver: sqlite3.Database
-    });
-    
+    })
+    // create table if not exists already
     await db.exec(`
       CREATE TABLE IF NOT EXISTS subscribers (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -52,26 +52,7 @@ try{
         firstname TEXT NOT NULL,
         lastname TEXT NOT NULL
       )`);
-      return db//permet d'y accéder dans la fonction d'en dessous
-    }catch(err){
-      next(err)//si erreur on passe au middleware suivant
+      return db
     }
-};
-createdb()
 
-// ACCEDER A LA BDD après ouverture
-/*
-async function main() {
-  const db = await createdb();
-
-  try {
-    const result = await db.get(`SELECT * FROM subscribers`);
-    console.log(result);
-  } catch (err) {
-    console.error(err);
-  }
-}
-
-// Call the main function to start the process
-main();
-*/
+openDBandCreateTable()
