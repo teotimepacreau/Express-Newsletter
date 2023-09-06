@@ -1,5 +1,4 @@
-// SUBMITTING FORM
-  // This script will be executed when the form is submitted
+// SUBSCRIBING
 document.getElementById('myForm').addEventListener('submit', async function(event) {
     event.preventDefault();
 
@@ -59,4 +58,3 @@ document.getElementById('myForm').addEventListener('submit', async function(even
       console.error('Error:', error);
     }
   });
-

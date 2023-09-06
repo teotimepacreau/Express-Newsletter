@@ -6,7 +6,7 @@ const path = require('path')
 const sqlite3 = require("sqlite3")
 const { open } = require("sqlite")
 
-// Middleware to parse JSON data received in the form
+//LE MIDDLEWARE APP.USE DANS APP.JS S'APPLIQUE A TOUTES LES ROUTES, INDEPENDAMMENT DE LURL ET DU TYPE DE REQUETE,  permet de parser le JSON data received in the form
 app.use(express.json());//If the Content-Type header is indeed application/json, the express.json() middleware kicks in. It reads the JSON data from the request body and parses it into a JavaScript object.
 
 // pour les views : HANDLEBARS
@@ -37,7 +37,7 @@ const unsubscribeRouter = require('./routes/unsubscribe.js')
 app.use("/unsubscribe", unsubscribeRouter)
 
 //CREATION DE LA DB
-const createdb = async () => {
+const createdb = async (req, res, next) => {
   const dbPath = path.join(__dirname, 'database.db');
 try{
     let db = await open({
@@ -54,7 +54,7 @@ try{
       )`);
       return db//permet d'y accéder dans la fonction d'en dessous
     }catch(err){
-      console.error(err)
+      next(err)//si erreur on passe au middleware suivant
     }
 };
 createdb()
