@@ -5,10 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--PHOSPHOR ICONS-->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    <!-- FONTS -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@200;300;400;500;600;700;800&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
                 /* CSS RESET */
         /* Box sizing rules */
@@ -68,6 +64,19 @@
         text-underline-offset: 0.2ex;
         }
         /* FIN DU CSS RESET */
+        
+        @font-face {
+            font-family: "BricolageGrotesque-Light";
+            src: local("BricolageGrotesque-Light"),
+            url("../fonts/BricolageGrotesque-Light.woff2") format("woff2");
+        }
+
+        @font-face {
+            font-family: "BricolageGrotesque-Bold";
+            src: local("BricolageGrotesque-Bold"),
+            url("../fonts/BricolageGrotesque-Bold.woff2") format("woff2");
+        }
+
         .hover1{
             transition: all 0.3s ease;
         }
@@ -89,22 +98,22 @@
 
     <title>Document</title>
 </head>
-<body style="background-color:#f3eee2">
-    <div class="container" style="color: #473e3e; max-width: 70ch; margin-inline: auto; margin-block: 3rem; font-family: 'Syne', serif;">
+<body style="background-color:#f3eee2; display: flex; justify-content: center; align-items: center; font-family: 'BricolageGrotesque-Light', sans-serif">
+    <div class="container" style="color: #473e3e; max-width: 70ch; margin-inline: auto; margin-block: 3rem; padding: 1rem;">
         <div class="title-block">
-            <h1 class="hover1" style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 4rem; font-weight: 700; letter-spacing: -0.15rem; line-height: 1.3;">The 35mm missive</h1>
-            <p style="margin-top: 1rem;">Dear {{lastname}} {{firstname}},</p>
+            <h1 class="hover1" style="font-family: 'BricolageGrotesque-Bold', sans-serif; font-size: 4rem; letter-spacing: -0.05rem; line-height: 1.3;">The 35mm missive</h1>
+            <p style="margin-top: 1rem;">Dear {{firstname}} {{lastname}},</p>
             <p>In today's issue, we will review some of the best 35mm photos you can find, and the stories behind the pics.</p>
         </div>
         <div class="h2" style="margin-top: 2rem;">
-            <h2 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 3rem; font-weight: 500; letter-spacing: -0.1rem; line-height: 1.3; background-color: #473e3e; color: #f3eee2; border-radius: 0.2rem; display: inline; padding-inline: 0.9rem; padding-block: 0.2rem; opacity: 0.75;">Singapore</h2>
+            <h2 style="font-family: 'BricolageGrotesque-Bold', sans-serif; font-size: 3rem; font-weight: 500; letter-spacing: -0.01rem; line-height: 1.3; background-color: #473e3e; color: #f3eee2; border-radius: 0.2rem; display: inline; padding-inline: 0.9rem; padding-block: 0.2rem; opacity: 0.75;">Singapore</h2>
         </div>
         <div class="img-block" style="display: flex; gap: 1rem; margin-top: 1rem;">
             <div class="flex-img">
-                <img src="/images/building.png" alt="San Francisco Building">
+                <img src="cid:image1" alt="San Francisco Building">
             </div>
             <div class="flex-img">
-                <img src="/images/building2.png" alt="San Francisco Building">
+                <img src="cid:image2" alt="San Francisco Building">
             </div>
             
         </div>
