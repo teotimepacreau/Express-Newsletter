@@ -64,13 +64,15 @@ a {
   --orange: oklch(70% 0.3 85);
   --grey60: oklch(50% 0 0 / 60%);
   --grey80: oklch(50% 0 0 / 80%);
-  --rythme: 1rlh;
+  --rythme: 1rem;
 }
 body{
   font-family: "LibreCaslonCondensed-Regular";
   background-color: var(--bg10);
   color: var(--body);
-  min-height: 100%;
+  min-height: 100dvh;
+  display: grid;
+  align-items: center;
 }
 
 .container {
@@ -112,7 +114,7 @@ h1 {
 }
 
 #myForm {
-  width: clamp(300px, 60% - 5vw ,60%);
+  width: clamp(300px, 60% - 10vw ,50ch);
   margin-inline: auto;
   font-family: 'Syne', sans-serif;
   font-weight: 100;
@@ -126,18 +128,18 @@ h1 {
 .flex-wrapper{
   display: flex;
   flex-direction: column;
-  gap: var(--rythme);
+  gap: calc(2*var(--rythme));
 }
 
 .flex-wrapper > * {
   display: flex;
   flex-direction: column;
-  gap: calc(0.1*var(--rythme));
+  gap: calc(0.5*var(--rythme));
 }
 
 #myForm label {
   font-size: 1.7rem;
-  font-weight: 100;
+  font-weight: 300;
   letter-spacing: -0.02rem;
 }
 #myForm input {
@@ -199,7 +201,7 @@ i:hover{
 }
 #unsubscribe-link{
   display: inline-block;
-  margin-top: calc(0.5*var(--rythme));
+  margin-top: var(--rythme);
   color: var(--grey60);
   text-underline-offset: 0.4ex;
 }
@@ -257,16 +259,16 @@ i:hover{
   background-color: var(--body);
   color: var(--bg10);
   display: grid;
-  grid-template-columns: min-content auto;
-  column-gap: calc(3*var(--rythme));
+  grid-template-columns: 50% 50%;
+  column-gap: calc(2*var(--rythme));
   font-family: "Syne", sans-serif;
   border-radius: 0.3rem;
 }
 
 #unsubscribe-container .ph-envelope-open {
-  padding-left: calc(2*var(--rythme));
-  font-size: calc(6*var(--rythme));
+  font-size: calc(10*var(--rythme));
   align-self: center;
+  justify-self: center;
 }
 
 #unsubscribe-container form {
@@ -281,12 +283,15 @@ i:hover{
 
 #unsubscribe-container h2 {
   text-wrap: balance;
+  font-weight: 400;
+  max-width: 25ch;
 }
 
 #unsubscribe-container-right {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  max-width: max-content;
 }
 
 #unsubscribe-container-right button {
@@ -298,7 +303,6 @@ i:hover{
   display: flex;
   flex-direction: column;
   gap: calc(0.25*var(--rythme));
-  max-width: max-content;
 }
 
 
@@ -318,6 +322,7 @@ i:hover{
   gap: 1ch;
   font-size: 1rem;
   align-items: center;
+  justify-content: center;
   background-color: var(--bgaccent);
   color: var(--body);
   font-weight: 100;
@@ -334,6 +339,6 @@ i:hover{
   background-color: var(--body);
   border-color: var(--bgaccent);
   color: var(--bgaccent);
-  font-weight: 700;
+  font-weight: 500;
 }
 

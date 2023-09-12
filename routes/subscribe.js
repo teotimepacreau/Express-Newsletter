@@ -4,9 +4,8 @@ const sqlite3 = require("sqlite3")
 const { open } = require("sqlite")
 
 router.get('/', (req, res)=>{
-    res.render('subscribe', {
-        title: "Subscribe"
-    })//render subscribe.handlebars
+    res.render('subscribe', 
+    {title: "Subscribe"})
 })
 // récupération de la request POST du formulaire subscribe qui n'est plus en JSON grace au middleware dans app.js : app.use(express.json())
 router.post('/', async (req, res, next)=>{
