@@ -4,7 +4,7 @@ const sqlite3 = require("sqlite3")
 const { open } = require("sqlite")
 
 router.get('/', (req, res)=>{
-    res.render ('unsubscribe',{
+    res.render ('unsubscribe',{//trouve directement dans views le unsubscribe.handlebars grâce à notre config dans app.js 
       title: "Unsubscribe"
     })   
 })//render unsubscribe.handlebars

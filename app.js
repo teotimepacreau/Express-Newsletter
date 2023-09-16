@@ -13,7 +13,7 @@ app.use(express.json());//If the Content-Type header is indeed application/json,
 const { engine } = require("express-handlebars")
 
 app.engine('handlebars', engine())
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'views'));//quand j'utilise res.render('templatename) ça regardera directement dans le /views
 app.set('view engine', 'handlebars');
 
 

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--PHOSPHOR ICONS-->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+                /* CSS RESET */
+        /* Box sizing rules */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Remove default list styles */
+        ul, ol, li {
+        list-style: none;
+        }
+
+        /* Set core body defaults */
+        body {
+        text-rendering: optimizeLegibility;
+        }    
+
+        /* Set core root defaults */
+        html {
+        scroll-behavior: smooth;
+        }
+            
+        /* A element that don't have a class get default styles */
+        a:not([class]) {
+        text-decoration-skip-ink: auto;
+        }
+            
+        /* Make images easier to work with */
+        img,
+        picture {
+        max-width: 100%; /* img should never overflow past the available space*/
+        display: block; /* avoid blank bottom*/
+        height: auto;/*preserve aspect ratio*/
+        border-radius: 0.2rem;
+        }
+
+        /* More consistent, styleable hr*/
+        hr {
+        border-width: 1px 0 0 0;
+        color: inherit;
+        height: 0;
+        overflow: visible;
+        }
+
+        /* Remove built-in form typography styles */
+        input, button, textarea, select {
+        font: inherit;
+        color: inherit;
+        }
+
+        /* More space above the underline */
+        a {
+        text-underline-offset: 0.2ex;
+        }
+        /* FIN DU CSS RESET */
+        
+        @font-face {
+            font-family: "BricolageGrotesque-Light";
+            src: local("BricolageGrotesque-Light"),
+            url("../fonts/BricolageGrotesque-Light.woff2") format("woff2");
+        }
+
+        @font-face {
+            font-family: "BricolageGrotesque-Bold";
+            src: local("BricolageGrotesque-Bold"),
+            url("../fonts/BricolageGrotesque-Bold.woff2") format("woff2");
+        }
+
+        .hover1{
+            transition: all 0.3s ease;
+        }
+        .hover1:hover {
+            padding-inline: 1rem;
+            color: #f3eee2;
+            background-color: #473e3e;
+            border-radius: 0.2rem;
+        }
+        .flex-img{
+            flex: 1 1 50%;
+        }
+        p{
+            line-height: 1.5; 
+            font-weight: 400; 
+            font-size: 1.2rem;
+        }
+    </style>
+
+    <title>{{{ title }}}</title>
+</head>
+<body style="background-color:#f3eee2; display: flex; justify-content: center; align-items: center; font-family: 'BricolageGrotesque-Light', sans-serif">
+    {{> newsletter}}
+</body>
+</html>
