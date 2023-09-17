@@ -6,30 +6,39 @@
             <p>Fictional Brands Archive is a collection of many fictional brands found in films, series and video games. It is structured according to the principles of brand design and aims to provide a comprehensive view of each fictional brand, framing them in their own fictional context and documenting their use and execution in the source work.</p>
             <i class="ph ph-arrow-circle-up-right"></i>
         </div>
-        
     </div>
     <div class="bento" id="billboard-bento">
         <img src="images/billboard.png" alt="">
     </div>
     <div class="bento" id="graph-bento">
-        <span>graph here</span>
+        <h2>Past issues</h2>
+        <div class="divider"></div>
+        <ol>
+            <li>Arasaka</li>
+            <li>Militech</li>
+            <li>Kang Tao</li>
+            <li>Biotechnica</li>
+        </ol>
     </div>
     <div class="bento" id="form-bento">
+        <div id="form-bento-left">
+            <img src="images/city.png" alt="">
+        </div>
         <form id="myForm" method="POST" action="/subscribe">
             <div class="flex-wrapper">
-                <div class="lastname">
-                    <label for="form-lastname">Lastname</label>
-                    <input autocomplete="on" type="text" id="form-lastname" name="lastname" required>
-                </div>
                 <div class="firstname">
                     <label for="form-firstname">Firstname</label>
                     <input autocomplete="on" type="text" id="form-firstname" name="firstname" required>
+                </div>
+                <div class="lastname">
+                    <label for="form-lastname">Lastname</label>
+                    <input autocomplete="on" type="text" id="form-lastname" name="lastname" required>
                 </div>
                 <div class="email">
                     <label for="form-email">E-mail</label>
                     <input autocomplete="on" type="email" id="form-email" name="email" required>
                 </div>
-                <button type="submit" id="submit-btn"><span>Join</span><span class="italic-letters">Newsletter</span></button>
+                <button type="submit" id="submit-btn"><i class="ph ph-envelope"></i>Subscribe to the newsletter</button>
                 </div>
             <a id="unsubscribe-link" href="/unsubscribe">Want to unsubscribe ?</a>
         </form>
