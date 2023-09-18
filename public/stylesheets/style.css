@@ -60,7 +60,7 @@ a {
   --primary: oklch(40% 0.085 30/ 70%);
   --onprimary: oklch(96% 0.085 30);
   --primaryicon: oklch(40% 0.085 30);
-  --primaryshadow: oklch(5% 0.2 30 / 15%);
+  --primaryshadow: oklch(25% 0 30 / 35%);
   --secondary: oklch(40% 0.085 80 / 70%);
   --tertiary: oklch(40% 0.085 240 / 70%);
   --accent: oklch(43% 0.14 30);
@@ -98,6 +98,13 @@ p {
   line-height: 1.5;
 }
 
+/* REUTILISABLE */
+.divider {
+  height: 1px;
+  width: 100%;
+  border-top: 2px ridge var(--onprimary);
+}
+
 .container {
   padding: var(--rythme);
   min-height: 100dvh;
@@ -110,9 +117,10 @@ p {
 .bento {
   padding: calc(2*var(--rythme));
   border-radius: var(--rythme);
-  box-shadow: -0.1px 0.1px 10px 0.1px var(--primaryshadow);
+  box-shadow: -1px 1px 20px 1px var(--primaryshadow);
 }
 
+/* LAYOUT ELEMENTS */
 #title-bento {
   grid-column: 1 / 3;
   grid-row: 1 / 2;
@@ -131,7 +139,7 @@ p {
   background-color: var(--onprimary);
   border-radius: 10%;
   color: var(--primaryicon);
-  box-shadow: -1px 1px 5px 1px var(--primaryshadow);
+  box-shadow: -1px 1px 10px 3px var(--primaryshadow);
 }
 
 #title-bento-flex-bottom{
@@ -176,11 +184,11 @@ p {
 #issue-name {
   min-width: max-content;
   flex-shrink: 0;
-  padding-block: 0.5ex;
+  padding-block: 0.4ex;
   padding-inline: 1.2ex;
   background-color: var(--onprimary);
   color: var(--primaryicon);
-  border-radius: 0.75rem;
+  border-radius: 0.5rem;
   font-weight: 500;
 }
 
@@ -206,12 +214,8 @@ p {
   box-shadow: -1px 1px 4px 2px var(--primaryshadow);
 }
 
-.divider {
-  height: 1px;
-  width: 100%;
-  border-top: 2px ridge var(--onprimary);
-}
 
+/* FORM */
 #myForm {
   color: var(--onprimary);
   max-width: 20ch;
