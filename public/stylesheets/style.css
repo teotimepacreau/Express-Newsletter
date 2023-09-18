@@ -56,15 +56,19 @@ a {
 }
 
 :root {
-  --bg: oklch(10% 0.07 60);
-  --primary: oklch(30% 0.08 30/ 70%);
-  --onprimary: oklch(95% 0.08 30);
-  --primaryicon: oklch(30% 0.08 30);
+  --bg: oklch(17% 0.07 60);
+  --primary: oklch(40% 0.085 30/ 70%);
+  --onprimary: oklch(96% 0.085 30);
+  --primaryicon: oklch(40% 0.085 30);
   --primaryshadow: oklch(5% 0.2 30 / 15%);
-  --secondary: oklch(30% 0.08 80 / 70%);
-  --tertiary: oklch(30% 0.08 240 / 70%);
+  --secondary: oklch(40% 0.085 80 / 70%);
+  --tertiary: oklch(40% 0.085 240 / 70%);
   --accent: oklch(43% 0.14 30);
-  --grey: oklch(50% 0.08 30 / 80%);
+  --grey: oklch(50% 0.085 30 / 80%);
+  --white30opacity: oklch(100% 0 30 / 35%);
+  --white90opacity: oklch(100% 0 30 / 90%);
+  --orange: oklch(80% 0.3 85);
+  --green: oklch(40% 0.3 140);
   --rythme: 1rem;
 }
 
@@ -134,6 +138,7 @@ p {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-top: var(--rythme);
 }
 
 #title-bento h1,p{
@@ -146,9 +151,41 @@ p {
   border: 1px ridge var(--secondary);
 }
 
-#graph-bento {
+#issues-bento {
   background-color: var(--primary);
   border: 1px ridge var(--primary);
+}
+
+#issues-bento > :not(:first-child) {
+  margin-top: var(--rythme);
+}
+#issues-flexer {
+  padding-block: var(--rythme);
+  display: flex;
+  flex-direction: column;
+  gap: var(--rythme);
+}
+#issues-flexer li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--rythme);
+  margin-top: var(--primary);
+}
+
+#issue-name {
+  min-width: max-content;
+  flex-shrink: 0;
+  padding-block: 0.5ex;
+  padding-inline: 1.2ex;
+  background-color: var(--onprimary);
+  color: var(--primaryicon);
+  border-radius: 0.75rem;
+  font-weight: 500;
+}
+
+#issue-divider {
+  border-top: 1px ridge var(--onprimary);
 }
 
 #form-bento {
@@ -171,9 +208,8 @@ p {
 
 .divider {
   height: 1px;
-  width: auto;
-  border-top: 1px solid var(--onprimary);
-  border-radius: 1px;
+  width: 100%;
+  border-top: 2px ridge var(--onprimary);
 }
 
 #myForm {
@@ -188,7 +224,7 @@ p {
 	border-bottom: .1rem solid var(--onprimary);
 	border-radius: .1rem 0;
 	padding: .1rem 1ch;
-  background-color: var(--bg);
+  background-color: var(--white30opacity);
 }
 
 #myForm input:focus, textarea:focus, select:focus{
@@ -215,6 +251,7 @@ p {
   align-items: center;
   justify-content: space-between;
   gap: 1ch;
+  font-weight: 600;
   text-align: left;
   box-shadow: -1px 1px 5px 1px var(--primaryshadow);
   background-color: var(--accent);
@@ -281,8 +318,8 @@ button:focus {
 }
 
 .subscribed-successfully {
-  background-color: var(--bg);
-  color: var(--onprimary);
+  background-color: var(--white90opacity);
+  color: var(--green);
 }
 
 @keyframes fade {
