@@ -1,16 +1,16 @@
-<div class="container" id="subscribe-page">
-    <div class="bento" id="title-bento">
+<main class="container" id="subscribe-page">
+    <section class="bento" id="title-bento">
         <h1>The Fictional brands newsletter</h1>
         <div class="divider"></div>
         <div id="title-bento-flex-bottom">
             <p>Fictional Brands Archive is a collection of many fictional brands found in films, series and video games. It is structured according to the principles of brand design and aims to provide a comprehensive view of each fictional brand, framing them in their own fictional context and documenting their use and execution in the source work.</p>
             <i class="ph ph-arrow-circle-up-right"></i>
         </div>
-    </div>
-    <div class="bento" id="billboard-bento">
+    </section>
+    <section class="bento" id="image-bento">
         <img src="images/billboard.png" alt="">
-    </div>
-    <div class="bento" id="issues-bento">
+    </section>
+    <section class="bento" id="issues-bento">
         <h2>Past issues</h2>
         <div class="divider"></div>
         <ol id="issues-flexer">
@@ -19,13 +19,13 @@
             <li><time>05/07/23</time><div class="divider" id="issue-divider"></div><span id="issue-name">Kang Tao</span></li>
             <li><time>20/06/23</time><div class="divider" id="issue-divider"></div><span id="issue-name">Biotechnica</span></li>
         </ol>
-    </div>
-    <div class="bento" id="form-bento">
-        <div id="form-bento-left">
+    </section>
+    <section class="bento" id="form-bento">
+        <figure id="form-bento-left">
             <img src="images/city.png" alt="">
-        </div>
+        </figure>
         <form id="myForm" method="POST" action="/subscribe">
-            <div class="flex-wrapper">
+            <div id="form-flex-wrapper">
                 <div class="firstname">
                     <label for="form-firstname">Firstname</label>
                     <input autocomplete="on" type="text" id="form-firstname" name="firstname" required>
@@ -39,10 +39,11 @@
                     <input autocomplete="on" type="email" id="form-email" name="email" required>
                 </div>
                 <button type="submit" id="submit-btn"><i class="ph ph-envelope"></i>Subscribe to the newsletter</button>
-                </div>
-            <a id="unsubscribe-link" href="/unsubscribe">Want to unsubscribe ?</a>
+            </div>
+            <nav role="navigation">
+                <a id="unsubscribe-link" href="/unsubscribe">Want to unsubscribe ?</a>
+            </nav>
         </form>
-    </div>
-        
-</div>
+    </section>    
+</main>
 <script src="/javascripts/frontHandleSubscribe.js"></script><!-- sait automatiquement que c'est dans le folder public car précisé dans app.js-->

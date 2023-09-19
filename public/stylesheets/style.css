@@ -72,7 +72,7 @@ a {
   --rythme: 1rem;
 }
 
-body{
+body {
   background-color: var(--bg);
   min-height: 100dvh;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -98,13 +98,16 @@ p {
   line-height: 1.5;
 }
 
-/* REUTILISABLE */
+/* PAGE SUBSCRIBE */
+
+/* components reutilisable */
 .divider {
   height: 1px;
   width: 100%;
   border-top: 2px ridge var(--onprimary);
 }
 
+/* layout */
 .container {
   padding: var(--rythme);
   min-height: 100dvh;
@@ -120,7 +123,7 @@ p {
   box-shadow: -1px 1px 20px 1px var(--primaryshadow);
 }
 
-/* LAYOUT ELEMENTS */
+/* Title bento */
 #title-bento {
   grid-column: 1 / 3;
   grid-row: 1 / 2;
@@ -154,47 +157,7 @@ p {
   text-wrap: balance;
 }
 
-#billboard-bento {
-  background-color: var(--secondary);
-  border: 1px ridge var(--secondary);
-}
-
-#issues-bento {
-  background-color: var(--primary);
-  border: 1px ridge var(--primary);
-}
-
-#issues-bento > :not(:first-child) {
-  margin-top: var(--rythme);
-}
-#issues-flexer {
-  padding-block: var(--rythme);
-  display: flex;
-  flex-direction: column;
-  gap: var(--rythme);
-}
-#issues-flexer li {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: var(--rythme);
-  margin-top: var(--primary);
-}
-
-#issue-name {
-  min-width: max-content;
-  flex-shrink: 0;
-  padding-block: 0.4ex;
-  padding-inline: 1.2ex;
-  background-color: var(--onprimary);
-  color: var(--primaryicon);
-  border-radius: 0.5rem;
-  font-weight: 500;
-}
-
-#issue-divider {
-  border-top: 1px ridge var(--onprimary);
-}
+/* Form bento */
 
 #form-bento {
   background-color: var(--tertiary);
@@ -214,8 +177,6 @@ p {
   box-shadow: -1px 1px 4px 2px var(--primaryshadow);
 }
 
-
-/* FORM */
 #myForm {
   color: var(--onprimary);
   max-width: 20ch;
@@ -237,13 +198,13 @@ p {
   outline-color: var(--onprimary);
 }
 
-.flex-wrapper{
+#form-flex-wrapper{
   display: flex;
   flex-direction: column;
   gap: calc(2*var(--rythme));
 }
 
-.flex-wrapper > * {
+#form-flex-wrapper > * {
   display: flex;
   flex-direction: column;
   gap: calc(0.5*var(--rythme));
@@ -299,6 +260,7 @@ button:focus {
   text-underline-offset: 0.3ex;
   padding-block: 0.6ex;
 }
+
 #unsubscribe-link:hover{
   background-color: var(--primary);
   transition: all 0.3s ease-out;
@@ -306,7 +268,58 @@ button:focus {
   color: var(--onprimary);
   padding-inline: 0.4ex;
 }
+
+/* Image bento */
+
+#image-bento {
+  background-color: var(--secondary);
+  border: 1px ridge var(--secondary);
+}
+
+/* Issues bento */
+
+#issues-bento {
+  background-color: var(--primary);
+  border: 1px ridge var(--primary);
+}
+
+#issues-bento > :not(:first-child) {
+  margin-top: var(--rythme);
+}
+
+#issues-flexer {
+  padding-block: var(--rythme);
+  display: flex;
+  flex-direction: column;
+  gap: var(--rythme);
+}
+
+#issues-flexer li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--rythme);
+  margin-top: var(--primary);
+}
+
+#issue-name {
+  min-width: max-content;
+  flex-shrink: 0;
+  padding-block: 0.4ex;
+  padding-inline: 1.2ex;
+  background-color: var(--onprimary);
+  color: var(--primaryicon);
+  border-radius: 0.5rem;
+  font-weight: 500;
+}
+
+#issue-divider {
+  border-top: 1px ridge var(--onprimary);
+}
+
+
 /* NOTIF TO CONFIRM THAT USER HAS SUCCESSFULLY SENT FORM */
+
 .notif {
   display: flex;
   align-items: center;
@@ -344,7 +357,7 @@ button:focus {
   color: var(--bg);
 }
 
-/* UNSUBCRIBE */
+/* PAGE UNSUBCRIBE */
 #unsubscribe-container {
   max-width: 50%;
   margin-top: calc(3*var(--rythme));
