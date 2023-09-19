@@ -20,24 +20,23 @@
             <li><time>20/06/23</time><div class="divider" id="issue-divider"></div><span id="issue-name">Biotechnica</span></li>
         </ol>
     </section>
-    <section class="bento" id="form-bento">
+    <section role="region" class="bento" id="form-bento">
         <figure id="form-bento-left">
             <img src="images/city.png" alt="">
         </figure>
         <form id="myForm" method="POST" action="/subscribe">
-            <div id="form-flex-wrapper">
-                <div class="firstname">
-                    <label for="form-firstname">Firstname</label>
-                    <input autocomplete="on" type="text" id="form-firstname" name="firstname" required>
-                </div>
-                <div class="lastname">
-                    <label for="form-lastname">Lastname</label>
-                    <input autocomplete="on" type="text" id="form-lastname" name="lastname" required>
-                </div>
-                <div class="email">
-                    <label for="form-email">E-mail</label>
-                    <input autocomplete="on" type="email" id="form-email" name="email" required>
-                </div>
+            <div class="firstname">
+                <label for="form-firstname">Firstname</label>
+                <input autocomplete="on" type="text" id="form-firstname" name="firstname" required>
+            </div>
+            <div class="lastname">
+                <label for="form-lastname">Lastname</label>
+                <input autocomplete="on" type="text" id="form-lastname" name="lastname" required>
+            </div>
+            <div class="email">
+                <label for="form-email">E-mail</label>
+                <input autocomplete="on" type="email" id="form-email" name="email" required>
+            </div>
                 <button type="submit" id="submit-btn"><i class="ph ph-envelope"></i>Subscribe to the newsletter</button>
             </div>
             <nav role="navigation">

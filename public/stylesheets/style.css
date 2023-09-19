@@ -179,9 +179,13 @@ p {
 
 #myForm {
   color: var(--onprimary);
-  max-width: 20ch;
+  width: min-content;
   justify-self: right;
+  display: flex;
+  flex-direction: column;
+  gap: calc(2*var(--rythme));
 }
+
 #myForm input {
   appearance: none;
 	border: none;
@@ -196,12 +200,6 @@ p {
   outline-width: 0.1ex;
   outline-style: ridge;/*follow the border without white px*/
   outline-color: var(--onprimary);
-}
-
-#form-flex-wrapper{
-  display: flex;
-  flex-direction: column;
-  gap: calc(2*var(--rythme));
 }
 
 #form-flex-wrapper > * {
@@ -253,12 +251,16 @@ button:focus {
   transition: all 0.3s ease-out;
 }
 
+#myForm nav {
+  margin: 0;
+  padding: 0;
+}
+
 #unsubscribe-link{
   display: inline-block;
-  margin-top: calc(var(--rythme) - 0.6ex);
-  color: var(--grey);
+  color: var(--onprimary);
+  opacity: 0.6;
   text-underline-offset: 0.3ex;
-  padding-block: 0.6ex;
 }
 
 #unsubscribe-link:hover{
@@ -266,7 +268,7 @@ button:focus {
   transition: all 0.3s ease-out;
   border-radius: 0.3rem;
   color: var(--onprimary);
-  padding-inline: 0.4ex;
+  padding: 0.4ex;
 }
 
 /* Image bento */
