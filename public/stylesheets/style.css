@@ -71,10 +71,6 @@ a {
   --orange: oklch(80% 0.3 85);
   --green: oklch(40% 0.3 140);
   --rythme: 1rem;
-  --input-border: #8b8a8b;
-  --input-focus-h: 30;
-  --input-focus-c: 0.1;
-  --input-focus-l: 50%;
 }
 
 body {
@@ -105,6 +101,13 @@ p {
 /* PAGE SUBSCRIBE */
 
 /* components reutilisable */
+
+*:focus{
+  transition: all 180ms ease-in-out;
+  outline: 1px ridge var(--orange);
+  box-shadow: 0 0 8px rgba(255, 149, 0, 0.35);
+}
+
 .divider {
   height: 1px;
   width: 100%;
@@ -210,13 +213,6 @@ input {
   background-color: var(--white30opacity);
 }
 
-*:focus{
-  outline-color: oklch(var(--input-focus-l) var(--input-focus-c) var(--input-focus-h));
-  box-shadow: 0 0 0 1px oklch(var(--input-focus-l)) var(--input-focus-c)(var(--input-focus-h));
-  transition: 180ms box-shadow ease-in-out;
-  outline: 1px ridge transparent;
-}
-
 #form-flex-wrapper > * {
   display: flex;
   flex-direction: column;
@@ -236,7 +232,7 @@ input {
   color: var(--onprimary);
   min-width: calc(0.5*var(--rythme));
   cursor: pointer;
-  border: 0.1rem ridge var(--onprimary);
+  border: 1px ridge var(--onprimary);
   border-color: transparent;
   padding: 1ex 0ex;
   padding-left: 1ex;
@@ -253,18 +249,11 @@ input {
 }
 
 #submit-btn:hover {
-  background-color: var(--darkbg);
-  color: var(--accent);
-  border-color: var(--accent);
+  background-color: var(--onprimary);
+  color: var(--primary);
+  border-color: var(--primary);
 }
 
-button:focus {
-  outline-width: 0.1ex;
-  outline-offset: 0.2ex;
-  outline-style: solid;
-  outline-color: var(--accent);
-  transition: all 0.3s ease-out;
-}
 
 #myForm nav {
   margin: 0;
