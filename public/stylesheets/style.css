@@ -24,8 +24,9 @@ html {
 }
     
 /* A element that don't have a class get default styles */
-a:not([class]) {
+a {
   text-decoration-skip-ink: auto;
+  text-underline-offset: 0.3ex;
 }
     
 /* Make images easier to work with */
@@ -47,12 +48,11 @@ hr {
 /* Remove built-in form typography styles */
 input, button, textarea, select {
   font: inherit;
-  color: inherit;
 }
 
-/* More space above the underline */
-a {
-  text-underline-offset: 0.2ex;
+
+button {
+  cursor: pointer;
 }
 
 :root {
@@ -66,9 +66,10 @@ a {
   --fourth: oklch(40% 0.1 320 );
   --accent: oklch(43% 0.14 30);
   --grey: oklch(50% 0.09 30 / 80%);
-  --white30opacity: oklch(100% 0 30 / 35%);
-  --white90opacity: oklch(100% 0 30 / 90%);
+  --white60opacity: oklch(100% 0 30 / 60%);
+  --white: oklch(100% 0 30);
   --orange: oklch(80% 0.3 85);
+  --orangeshadow:oklch(60% 0.3 85 / 35%);
   --green: oklch(40% 0.3 140);
   --rythme: 1rem;
 }
@@ -102,11 +103,21 @@ p {
 
 /* components reutilisable */
 
-*:focus{
-  transition: all 180ms ease-in-out;
-  outline: 1px ridge var(--orange);
-  box-shadow: 0 0 8px rgba(255, 149, 0, 0.35);
+*:focus-visible{
+  outline: 0.1px ridge var(--orange);
+  filter: drop-shadow(0 0 1rem var(--orangeshadow));
 }
+
+button:focus-visible{
+  outline-offset: 0.8ex;
+  outline-width: 2px;
+}
+
+a:focus-visible{
+  outline-width: 2px;
+  outline-offset: 0.8ex;
+}
+
 
 .divider {
   height: 1px;
@@ -207,10 +218,13 @@ input {
   appearance: none;
 	border: none;
 	outline: none;
-	border-bottom: .1rem solid var(--onprimary);
+	border-bottom: .2rem solid var(--white);
 	border-radius: .1rem .1rem;
 	padding: .2rem .6ch;
-  background-color: var(--white30opacity);
+  background-color: var(--white60opacity);
+  color: var(--tertiary);
+  font-weight: 600;
+  letter-spacing: 0.02rem;
 }
 
 #form-flex-wrapper > * {
@@ -260,19 +274,23 @@ input {
   padding: 0;
 }
 
-#unsubscribe-link{
+a{
   display: inline-block;
   color: var(--onprimary);
-  opacity: 0.75;
-  text-underline-offset: 0.3ex;
+  border-radius: 0.02rem;
+  transition: padding 0.3s ease-out, background-color 0.3s ease-out;
 }
 
-#unsubscribe-link:hover{
-  background-color: var(--primary);
-  transition: all 0.3s ease-out;
+a:hover{
+  background-color: var(--white);
   border-radius: 0.3rem;
-  color: var(--onprimary);
-  padding: 0.4ex;
+  color: var(--tertiary);
+  padding-block: 0.6ex;
+  padding-inline: 1ex;
+  font-weight: 500;
+  text-underline-offset: 0.4ex;
+  text-decoration-skip-ink: none;
+  text-decoration-thickness: 0.4ex;
 }
 
 /* Image bento */
@@ -331,17 +349,18 @@ input {
   align-items: center;
   gap: 0.5ch;
   position: absolute;
-  right: var(--rythme);
-  bottom: var(--rythme);
+  right: calc(2*var(--rythme));
+  bottom: calc(3*var(--rythme));
   padding: calc(0.5*var(--rythme));
   border-radius: 0.3rem;
   animation: fade 0.6s ease-out;
   box-shadow: -2px 2px 5px 0px var(--primaryshadow);
   transition: all 0.3s ease-out;
+  opacity: 0.8;
 }
 
 .subscribed-successfully {
-  background-color: var(--white90opacity);
+  background-color: var(--white);
   color: var(--green);
 }
 
@@ -427,7 +446,7 @@ input {
   border-color: transparent;
   padding: 1ex 2ex;/*hauteur des minuscules souvent appelée hauteur "x" lowercase*/
   border-radius: 0.3rem;
-  transition: all 0.3s ease-out;
+  transition: background-color 0.3s ease-out;
 }
 
 #unsubscribe-btn:hover {
