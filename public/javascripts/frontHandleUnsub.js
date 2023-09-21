@@ -13,6 +13,9 @@ document.getElementById("unsubscribe-form").addEventListener('submit',async (eve
       },
       body: JSON.stringify(email)
     })
+
+    const responseData = await response.json();
+
     if(response.ok){
       console.log('unsubscribed successfully')
 
@@ -31,7 +34,8 @@ document.getElementById("unsubscribe-form").addEventListener('submit',async (eve
           container.removeChild(notificationUnsubscribePositive)
       }, 4000)
     }else{
-      console.error('Error subscribing:', response.statusText);
+      if(response.status === 400){
+        console.error('Error unsubscribing:', response.statusText);
 
         //send visual notif "Email already exists"
         const notifEmailDontExists = document.createElement('div')
@@ -40,12 +44,13 @@ document.getElementById("unsubscribe-form").addEventListener('submit',async (eve
         <span>Error : E-mail don't exists in the database</span>
         `
         notifEmailDontExists.classList.add('notif','email-already-exists')
-       notifEmailDontExists.setAttribute("role", "alert")
+        notifEmailDontExists.setAttribute("role", "alert")
         const container = document.querySelector('.container')
         container.appendChild(notifEmailDontExists)
         setTimeout(()=>{
           container.removeChild(notifEmailDontExists)
       }, 4000)
+    }
     }
   }catch(error) {
     console.error('Error:', error);

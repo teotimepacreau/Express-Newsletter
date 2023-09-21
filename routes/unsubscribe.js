@@ -19,12 +19,20 @@ router.delete('/', async(req,res,next)=>{
     driver: sqlite3.Database
   })
   try{
-    await db.run(`DELETE FROM subscribers WHERE email='${email}'`)
-    res.status(201).json({message: "Unsubscribed successfully"})
-    console.log('Record deleted: ',email)
+    // check if email exists in the DB
+    const existingSubscriber = await db.get(`SELECT * FROM subscribers WHERE email = ?`, [email])
+
+    if(!existingSubscriber){
+      res.status(400).json({error: "Email don't exists in database"})
+      console.log("tried unsubscribing server side but email don't exists")
+    }else{
+      await db.run(`DELETE FROM subscribers WHERE email='${email}'`)
+      res.status(201).json({message: "Unsubscribed successfully"})
+      console.log('Record deleted: ',email)
+    }
   }catch(err){
-    console.error("Error deleting record:", err); // Debug line
-    res.status(400).json({error: "Email don't exists in database"})
+    console.error("Error deleting record", err);
+    res.status(500).json({error: "Internal server error"})
     next(err)
   }
 })
