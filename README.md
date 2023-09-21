@@ -2,21 +2,21 @@
 Newsletter project built with NodeJS, Express and SQLite
 
 # Features : 
-1. Subscription logic : User can subscribe by filling and sending the form : lastname, firstname and email are added to SQLite DB. A notif confirms or infirms the subscription ✅
-2. Unsubscription logic: Create a route for users to unsubscribe from the newsletter. Update the database accordingly. Checks if email is already in the DB, if not sends an error notif✅
-3. Created front for sub and unsub page ✅
-4. Create Newsletter Templates: 
-- Design and create newsletter templates using HTML and CSS ✅ ⚠️: anchor link to unsub at the bottom of the email is waiting for his definitive href
-- Store these templates on your server or use a template library.
-1. Composing and Sending Newsletters:
-- Create a route or controller to compose newsletters with the desired content.🚧
-- Implement functionality to retrieve subscribers' information from the database and send newsletters to your subscribers.✅
-- Use an email library like Nodemailer to send emails programmatically.✅
-1. Scheduling Newsletter Sending:
-- Implement a scheduling mechanism to send newsletters at specific intervals or times with a library like node-cron to schedule periodic tasks.🚧
-1. Security Considerations: Implement data validation, sanitation, and encryption to protect user information. Prevent SQL injection and other security vulnerabilities. 🚧
-2. Error Handling: Implement proper error handling and validation for user inputs and database operations. 🚧
-3. Deploy on fly.io 🚧
+1. Subscription logic : Users can subscribe on homepage by filling and sending the form : lastName, firstName and email are added to SQLite Database. A notif confirms or infirms the subscription ✅
+2. Unsubscription logic : Users can unsubscribe on /unsubscribe. It updates the database accordingly by removing. Checks if email is already in the DB, if not sends an error notif to user✅
+3. Newsletter Templates : 
+- Each newsletter is created wuthin a template using handlebars ✅ ⚠️: anchor link to unsub at the bottom of the email is waiting for his definitive href
+4. Composing Newsletters :
+- Each newsletter dynamically retrieve lastName and firstName to personalize the mail✅
+5. Sending newsletter : 
+- Middleware retrieve subscribers' information from the SQL DB✅
+- Nodemailer send newsletters to the subscribers.✅
+6. Scheduling Newsletter Sending:
+- Nodecron send newsletters at specific intervals.🚧
+7. Security Considerations: Implement data validation, sanitation, and encryption to protect user information. Prevent SQL injection and other security vulnerabilities.🚧
+8. Error Handling: Implement proper error handling and validation for user inputs and database operations.🚧
+9. Deploy on fly.io🚧
+10. DB disaster recovery with filestream.io🚧
 
 # 🛠️ 
 - NodeJS

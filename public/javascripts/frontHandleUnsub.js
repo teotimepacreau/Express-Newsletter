@@ -41,7 +41,7 @@ document.getElementById("unsubscribe-form").addEventListener('submit',async (eve
         const notifEmailDontExists = document.createElement('div')
         notifEmailDontExists.innerHTML = `
         <i class="ph ph-seal-warning"></i>
-        <span>Error : E-mail don't exists in the database</span>
+        <span>Error : E-mail doesn't exists in the database</span>
         `
         notifEmailDontExists.classList.add('notif','email-already-exists')
         notifEmailDontExists.setAttribute("role", "alert")
