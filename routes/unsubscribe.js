@@ -7,10 +7,11 @@ router.get('/', (req, res)=>{
     res.render ('unsubscribe',{//trouve directement dans views le unsubscribe.handlebars grâce à notre config dans app.js 
       title: "Unsubscribe"
     })   
-})//render unsubscribe.handlebars
+})
 
-// récupération de la request DELETE du formulaire unsubscribe qui n'est plus en JSON grace au middleware dans app.js : app.use(express.json())
+// récupère la request DELETE du formulaire unsubscribe qui n'est plus en JSON grace au middleware dans app.js : app.use(express.json())
 router.delete('/', async(req,res,next)=>{
+  console.log(req.body)
   const email = req.body.email
   console.log('reveived data from unsub', email)
 

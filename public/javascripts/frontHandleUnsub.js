@@ -11,10 +11,10 @@ document.getElementById("unsubscribe-form").addEventListener('submit',async (eve
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(email)
+      body: JSON.stringify(email)//met l'email dans le body de la requête HTTP
     })
 
-    const responseData = await response.json();
+    const responseData = await response.json();//attend la réponse envoyé par ma routes/unsubscribe
 
     if(response.ok){
       console.log('unsubscribed successfully')
