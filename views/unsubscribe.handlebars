@@ -11,14 +11,16 @@
     <div class="bento" id="unsub-form-bento">
       <form id="unsubscribe-form" method="POST" action="/unsubscribe">
         <h2>Want to unsubscribe ?</h2>
-        <label for="unsubscribe-email">E-mail</label>
-        <input
+        <div class="label-and-input">
+          <label for="unsubscribe-email">E-mail</label>
+          <input
           autocomplete="on"
           type="email"
           id="unsubscribe-email"
           name="email"
           required
-        />
+          />
+        </div>
         <button type="submit" id="unsubscribe-btn">
           <i class="ph ph-hand-waving"></i>
           <div class="inner-btn">
@@ -27,8 +29,9 @@
         </button>
       </form>
     </div>
-    <nav>
-      <a href="/subscribe">Go back to subscription page</a>
+    <nav class="bento" id="unsub-backtosubscribe-bento">
+      <i class="ph ph-arrow-circle-left"></i>
+      <a id="link-go-to-subscribe" href="/subscribe">Go back to subscription page</a>
     </nav>
     <address>Contact Us</address>
   </section>

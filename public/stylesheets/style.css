@@ -25,6 +25,7 @@ html {
     
 /* A element that don't have a class get default styles */
 a {
+  color: inherit;
   text-decoration-skip-ink: auto;
   text-underline-offset: 0.3ex;
 }
@@ -50,13 +51,12 @@ input, button, textarea, select {
   font: inherit;
 }
 
-
 button {
   cursor: pointer;
 }
 
 :root {
-  --darkbg: oklch(10% 0.05 60);
+  --darkbg: oklch(12% 0.05 30);
   --primary: oklch(40% 0.1 30);
   --onprimary: oklch(97% 0.04 30);
   --primaryicon: oklch(40% 0.1 30);
@@ -69,7 +69,7 @@ button {
   --white60opacity: oklch(100% 0 30 / 60%);
   --white: oklch(100% 0 30);
   --orange: oklch(80% 0.3 85);
-  --orangeshadow:oklch(60% 0.3 85 / 35%);
+  --orangeshadow:oklch(80% 0.3 85 / 45%);
   --green: oklch(40% 0.3 140);
   --rythme: 1rem;
 }
@@ -105,7 +105,7 @@ p {
 
 *:focus-visible{
   outline: 0.1px ridge var(--orange);
-  filter: drop-shadow(0 0 1rem var(--orangeshadow));
+  filter: drop-shadow(0 0 2rem var(--orangeshadow));
 }
 
 button:focus-visible{
@@ -125,11 +125,6 @@ a:focus-visible{
   border-top: 2px ridge var(--onprimary);
 }
 
-a:hover {
-  text-decoration-thickness: 0.3ex;
-  text-decoration-skip-ink: none;
-}
-
 /* layout */
 .container {
   padding: var(--rythme);
@@ -138,7 +133,7 @@ a:hover {
 
 .bento {
   padding: calc(2*var(--rythme));
-  border-radius: calc(2*var(--rythme));
+  border-radius: calc(1.5*var(--rythme));
   box-shadow: -1px 1px 20px 1px var(--primaryshadow);
 }
 
@@ -227,10 +222,10 @@ input {
   letter-spacing: 0.02rem;
 }
 
-#form-flex-wrapper > * {
+.label-and-input {
   display: flex;
   flex-direction: column;
-  gap: calc(0.5*var(--rythme));
+  gap: calc(0.25*var(--rythme));
 }
 
 #submit-btn{
@@ -274,19 +269,18 @@ input {
   padding: 0;
 }
 
-a{
+#unsubscribe-link{
   display: inline-block;
   color: var(--onprimary);
   border-radius: 0.02rem;
   transition: padding 0.3s ease-out, background-color 0.3s ease-out;
 }
 
-a:hover{
+#unsubscribe-link:hover{
   background-color: var(--white);
   border-radius: 0.3rem;
   color: var(--tertiary);
-  padding-block: 0.6ex;
-  padding-inline: 1ex;
+  padding: 1ex;
   font-weight: 500;
   text-underline-offset: 0.4ex;
   text-decoration-skip-ink: none;
@@ -409,7 +403,7 @@ a:hover{
   padding: calc(2*var(--rythme));
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 20dvh auto;
+  grid-template-rows: 20dvh auto auto;
 }
 
 #unsub-title {
@@ -421,13 +415,12 @@ a:hover{
   grid-column: 2 / 3;
   grid-row: 2 /3;
   background-color: var(--tertiary);
-  min-height: 100dvh;
 }
 
 #unsubscribe-form {
   display: flex;
   flex-direction: column;
-  gap: var(--rythme);
+  gap: calc(2*var(--rythme));
 }
 
 #unsubscribe-btn {
@@ -453,4 +446,31 @@ a:hover{
   background-color: var(--tertiary);
   border-color: var(--onprimary);
   color: var(--bgaccent);
+}
+
+#unsub-backtosubscribe-bento {
+  grid-row: 3 / 4;
+  background-color: var(--secondary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#unsub-backtosubscribe-bento i {
+  font-size: calc(3*var(--rythme));
+  padding: calc(0.5*var(--rythme));
+  background-color: var(--onprimary);
+  border-radius: 10%;
+  color: var(--secondary);
+  box-shadow: -1px 1px 5px 2px var(--primaryshadow);
+}
+
+#link-go-to-subscribe{
+  transition: text-underline-offset 0.1s ease;
+}
+
+#link-go-to-subscribe:hover {
+  text-underline-offset: 0.4ex;
+  text-decoration-skip-ink: none;
+  text-decoration-thickness: 0.4ex;
 }
