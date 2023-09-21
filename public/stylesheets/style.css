@@ -56,20 +56,19 @@ button {
 }
 
 :root {
-  --darkbg: oklch(12% 0.05 30);
-  --primary: oklch(40% 0.1 30);
-  --onprimary: oklch(97% 0.04 30);
-  --primaryicon: oklch(40% 0.1 30);
-  --primaryshadow: oklch(25% 0 30 / 35%);
-  --secondary: oklch(40% 0.1 80 );
-  --tertiary: oklch(40% 0.1 240 );
-  --fourth: oklch(40% 0.1 320 );
-  --accent: oklch(43% 0.14 30);
-  --grey: oklch(50% 0.09 30 / 80%);
-  --white60opacity: oklch(100% 0 30 / 60%);
-  --white: oklch(100% 0 30);
+  --darkbg: oklch(12% 0.05 120);
+  --primary: oklch(42% 0.19 120);
+  --onprimary: oklch(97% 0.04 120);
+  --primaryicon: oklch(42% 0.19 120);
+  --primaryshadow: oklch(25% 0 120 / 35%);
+  --secondary: oklch(42% 0.19 80);
+  --tertiary: oklch(42% 0.19 240);
+  --fourth: oklch(42% 0.19 320);
+  --grey: oklch(50% 0.09 120 / 80%);
+  --white70opacity: oklch(100% 0 120 / 70%);
+  --white: oklch(100% 0 120);
   --orange: oklch(80% 0.3 85);
-  --orangeshadow:oklch(80% 0.3 85 / 45%);
+  --orangeshadow:oklch(80% 0.3 85 / 55%);
   --green: oklch(40% 0.3 140);
   --rythme: 1rem;
 }
@@ -216,10 +215,9 @@ input {
 	border-bottom: .2rem solid var(--white);
 	border-radius: .1rem .1rem;
 	padding: .2rem .6ch;
-  background-color: var(--white60opacity);
+  background-color: var(--white70opacity);
   color: var(--tertiary);
-  font-weight: 600;
-  letter-spacing: 0.02rem;
+  font-weight: 500;
 }
 
 .label-and-input {
@@ -237,8 +235,8 @@ input {
   font-weight: 600;
   text-align: left;
   box-shadow: -1px 1px 5px 1px var(--primaryshadow);
-  background-color: var(--accent);
-  color: var(--onprimary);
+  background-color: var(--onprimary);
+  color: var(--primary);
   min-width: calc(0.5*var(--rythme));
   cursor: pointer;
   border: 1px ridge var(--onprimary);
@@ -258,9 +256,14 @@ input {
 }
 
 #submit-btn:hover {
+  background-color: var(--primary);
+  color: var(--onprimary);
+  border-color: var(--onprimary);
+}
+
+#submit-btn:hover i {
   background-color: var(--onprimary);
   color: var(--primary);
-  border-color: var(--primary);
 }
 
 
@@ -350,7 +353,7 @@ input {
   animation: fade 0.6s ease-out;
   box-shadow: -2px 2px 5px 0px var(--primaryshadow);
   transition: all 0.3s ease-out;
-  opacity: 0.8;
+  opacity: 0.95;
 }
 
 .subscribed-successfully {
@@ -403,12 +406,12 @@ input {
   padding: calc(2*var(--rythme));
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 20dvh auto auto;
+  grid-auto-rows: auto;
+  row-gap: var(--rythme);
 }
 
 #unsub-title {
-  grid-column: 1 / 3;
-  grid-row: 1 / 2;
+  padding-bottom: var(--rythme);
 }
 
 #unsub-form-bento {
@@ -449,7 +452,8 @@ input {
 }
 
 #unsub-backtosubscribe-bento {
-  grid-row: 3 / 4;
+  grid-column: 2 / 3;
+  grid-row: 4 / 5;
   background-color: var(--secondary);
   display: flex;
   align-items: center;
@@ -457,7 +461,7 @@ input {
 }
 
 #unsub-backtosubscribe-bento i {
-  font-size: calc(3*var(--rythme));
+  font-size: calc(2.5*var(--rythme));
   padding: calc(0.5*var(--rythme));
   background-color: var(--onprimary);
   border-radius: 10%;
@@ -473,4 +477,14 @@ input {
   text-underline-offset: 0.4ex;
   text-decoration-skip-ink: none;
   text-decoration-thickness: 0.4ex;
+}
+
+#unsub-content-bento {
+  grid-column: 1 / 2;
+  grid-row: 3 / 4;
+  background-color: var(--primary);
+}
+
+#unsub-content-bento > :not(:first-child) {
+  margin-top: var(--rythme);
 }
