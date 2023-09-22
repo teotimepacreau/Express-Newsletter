@@ -3,11 +3,29 @@ const path = require("path");
 const fs = require("fs");
 const sqlite3 = require("sqlite3");
 const { open } = require("sqlite");
-const nodemailer = require("nodemailer");
 const handlebars = require("handlebars");
+const sgMail = require('@sendgrid/mail');
 const cron = require("node-cron")
 const dotenv = require("dotenv");
 dotenv.config();
+
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
+// TOUS LES PATHS
+
+// Read the file synchronously (or asynchronously, as needed)
+// Read the file synchronously
+const binaryImg1 = fs.readFileSync(path.join(__dirname, '..', 'public/images/building.png'));
+
+// Convert binary content to base64-encoded string
+const base64ContentImg1 = binaryImg1.toString('base64');
+
+// Read the file synchronously
+const binaryImg2 = fs.readFileSync(path.join(__dirname, '..', 'public/images/building2.png'));
+
+// Convert binary content to base64-encoded string
+const base64ContentImg2 = binaryImg2.toString('base64');
+
 
 const emailTemplatePath = path.join(__dirname, "..", "views/layouts/emailtemplate.handlebars");
 const emailTemplate = fs.readFileSync(emailTemplatePath, "utf-8");
@@ -38,68 +56,63 @@ async function getSubscribers() {
 
 const mailer = async ()=>{
   try{
-    const transporter = nodemailer.createTransport({
-      host: "smtp-mail.outlook.com", //marche que avec outlook
-      secureConnection: false,
-      port: 587,
-      tls: {
-        ciphers: "SSLv3",
-      },
-      auth: {
-        user: "teotimetest@outlook.fr",
-        pass: "test_111",
-      },
-    })
     const subscribers = await getSubscribers();
     console.log(subscribers);
 
     for (const subscriber of subscribers) {
       //remplace les variables de email.html
       let personalizedContent = emailTemplateCompiled({
-        title: "The 35mm missive n°1",
+        title: "The fictive brands newsletter",
         newsletter: newsletterTemplateCompiled({
           firstname: subscriber.firstname,
           lastname: subscriber.lastname,
         }),
       })
       // images en PJ car sinon ne s'affichent pas
+      
       const attachments = [
         {
-          filename: "building.png",
-          path: path.join(__dirname, "..", "public/images/building.png"),
-          cid: "image1", // Use the same 'cid' as in the src attribute
+          content: base64ContentImg1, 
+          filename: 'building.png',                // File name
+          type: 'image/png',                      // MIME type of the attachment
         },
         {
-          filename: "building2.png",
-          path: path.join(__dirname, "..", "public/images/building2.png"),
-          cid: "image2", // Use the same 'cid' as in the src attribute
+          content: base64ContentImg2, // Replace with your base64-encoded file content
+          filename: 'building2.png',               // File name
+          type: 'image/png',                      // MIME type of the attachment
         },
-      ];
+      ]
 
-      // créer le mail
-      const options = {
-        from: "teotimetest@outlook.fr",
+      const msg = {
         to: subscriber.email,
-        subject: "Test newsletter",
+        from: {
+          name: 'Teotime Pacreau',
+          email: process.env.FROM_EMAIL
+        },
+        subject: 'The fictive brands newsletter',
         html: personalizedContent,
-        attachments: attachments, // Attach images
-      };
+        attachments: attachments
+        };
 
-
-      // envoi du mail
-      transporter.sendMail(options, (error, info) => {
-        if (error) {
-          console.error(error);
-        } else {
-          console.log("email envoyé" + info.response);
-        }
-      });
-    }
-    console.log("Emails sent successfully");
-  }catch(err){
-    console.error("Error fetching subscribers to populate variables in Newsletter", err)
-  }
-  
+        const sendMail = async () => {
+          try {
+            await sgMail.send(msg);
+          } catch (error) {
+            console.error(error);
+        
+            if (error.response) {
+              console.error(error.response.body)
+            }
+          }
+        };
+        
+        sendMail()
+        console.log("Emails sent successfully");
+      }
+      
+      }catch(err){
+        console.error("Error fetching subscribers to populate variables in Newsletter", err)
+      }
 }
 
 cron.schedule("0 19 * * 6", mailer)
@@ -107,69 +120,8 @@ cron.schedule("0 19 * * 6", mailer)
 
 router.get("/", async (req, res) => {
   try {
-    const subscribers = await getSubscribers();
-    console.log(subscribers);
-
-    // Create a nodemailer transporter for sending emails
-    const transporter = nodemailer.createTransport({
-      host: "smtp-mail.outlook.com", //marche que avec outlook
-      secureConnection: false,
-      port: 587,
-      tls: {
-        ciphers: "SSLv3",
-      },
-      auth: {
-        user: "teotimetest@outlook.fr",
-        pass: "test_111",
-      },
-    });
-
-    for (const subscriber of subscribers) {
-      //remplace les variables de email.html
-      let personalizedContent = emailTemplateCompiled({
-        title: "The 35mm missive n°1",
-        newsletter: newsletterTemplateCompiled({
-          firstname: subscriber.firstname,
-          lastname: subscriber.lastname,
-        }),
-      })
-
-      // images en PJ car sinon ne s'affichent pas
-      const attachments = [
-        {
-          filename: "building.png",
-          path: path.join(__dirname, "..", "public/images/building.png"),
-          cid: "image1", // Use the same 'cid' as in the src attribute
-        },
-        {
-          filename: "building2.png",
-          path: path.join(__dirname, "..", "public/images/building2.png"),
-          cid: "image2", // Use the same 'cid' as in the src attribute
-        },
-      ];
-
-      // créer le mail
-      const options = {
-        from: "teotimetest@outlook.fr",
-        to: subscriber.email,
-        subject: "Test newsletter",
-        html: personalizedContent,
-        attachments: attachments, // Attach images
-      };
-
-
-      // envoi du mail
-      transporter.sendMail(options, (error, info) => {
-        if (error) {
-          console.error(error);
-        } else {
-          console.log("email envoyé" + info.response);
-        }
-      });
-    }
-    console.log("Emails sent successfully");
-
-  } catch (err) {
+    await mailer()
+  }catch(err) {
     console.error("Error fetching subscribers to populate variables in Newsletter", err);
     res.status(500).send("Internal Server Error");
   }
@@ -178,6 +130,8 @@ router.get("/", async (req, res) => {
 
 router.get("/showhtml", (req, res) => {
   res.render("newsletter", {
+
+
     title: "The 35mm missive n°1",
     layout: "emailtemplate",
   });
