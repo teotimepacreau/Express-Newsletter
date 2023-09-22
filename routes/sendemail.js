@@ -24,15 +24,16 @@ const newsletterTemplateCompiled = handlebars.compile(newsletterContent);
 
 
 async function getSubscribers() {
-  let db = await open({
-    filename: path.join(__dirname, "..", "database.db"),
-    driver: sqlite3.Database,
-  });
-  const query = `SELECT * FROM subscribers`;
-  const subscribers = await db.all(query);
-  return subscribers;
+  try{
+    let db = await open({
+      filename: path.join(__dirname, "..", "database.db"),
+      driver: sqlite3.Database,
+    });
+    const subscribers = await db.all(`SELECT * FROM subscribers`);
+    return subscribers;
+  }catch(err){
+    console.error(err)  } 
 }
-
 
 
 const mailer = async ()=>{
