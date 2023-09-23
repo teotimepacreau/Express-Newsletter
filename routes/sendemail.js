@@ -21,13 +21,15 @@ const binaryImg2 = fs.readFileSync(path.join(__dirname, '..', 'public/images/bui
 const emailTemplatePath = path.join(__dirname, "..", "views/layouts/emailtemplate.handlebars");
 const emailTemplate = fs.readFileSync(emailTemplatePath, "utf-8");
 
-
-
 const newsletterPath = path.join(__dirname,"..", "views/newsletter.handlebars");
 const newsletterContent = fs.readFileSync(newsletterPath, "utf-8");
 
 // Register the "newsletter" partial
 handlebars.registerPartial('newsletter', newsletterContent);
+
+// Compile the Handlebars templates
+const emailTemplateCompiled = handlebars.compile(emailTemplate);
+const newsletterTemplateCompiled = handlebars.compile(newsletterContent);
 
 async function getSubscribers() {
   try{
@@ -49,10 +51,15 @@ const mailer = async ()=>{
 
     for (const subscriber of subscribers) {
       //remplace les variables de email.html
-      let personalizedContent = newsletterContent
-      .replace('{{lastname}}', subscriber.lastname)
-      .replace('{{firstname}}', subscriber.firstname)
-      // images en PJ car sinon ne s'affichent pas
+      let personalizedContent = emailTemplateCompiled({
+        title: "The fictive brands newsletter",
+        firstname: subscriber.firstname, // Provide firstname and lastname directly
+        lastname: subscriber.lastname,
+      });
+      // let personalizedContent = newsletterContent
+      // .replace('{{lastname}}', subscriber.lastname)
+      // .replace('{{firstname}}', subscriber.firstname)
+      // // images en PJ car sinon ne s'affichent pas
       
       const attachments = [
         {
