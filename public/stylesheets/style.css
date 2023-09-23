@@ -67,9 +67,9 @@ button {
   --grey: oklch(50% 0.09 120 / 80%);
   --white70opacity: oklch(100% 0 120 / 70%);
   --white: oklch(100% 0 120);
-  --orange: oklch(90% 0.37 85);
+  --orange: oklch(90% 0.37 85 / 85%);
   --orangeshadow:oklch(80% 0.3 85 / 55%);
-  --green: oklch(40% 0.3 140);
+  --green: oklch(20% 0.3 140);
   --rythme: 1rem;
 }
 

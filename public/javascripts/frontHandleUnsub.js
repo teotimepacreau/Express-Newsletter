@@ -6,7 +6,7 @@ document.getElementById("unsubscribe-form").addEventListener('submit',async (eve
   }
   console.log('email envoyé depuis unsub', email)
   try{
-    const response = await fetch('/unsubscribe',{
+    const response = await fetch('/unsubscribe',{//this fetch call sends a DELETE request to the /unsubscribe route with the data object in JSON format
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
@@ -16,7 +16,7 @@ document.getElementById("unsubscribe-form").addEventListener('submit',async (eve
 
     const responseData = await response.json();//attend la réponse envoyé par ma routes/unsubscribe
 
-    if(response.ok){
+    if(response.status === 201){
       console.log('unsubscribed successfully')
 
       //send visual notif confirmation
@@ -33,6 +33,7 @@ document.getElementById("unsubscribe-form").addEventListener('submit',async (eve
       setTimeout(()=>{
           container.removeChild(notificationUnsubscribePositive)
       }, 4000)
+      
     }else{
       if(response.status === 400){
         console.error('Error unsubscribing:', response.statusText);

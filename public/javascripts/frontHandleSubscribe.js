@@ -3,9 +3,9 @@ document.getElementById('myForm').addEventListener('submit', async function(even
     event.preventDefault();
 
     const data = {
-        email: document.getElementById('form-email').value,
-        firstname: document.getElementById('form-firstname').value,
-        lastname: document.getElementById('form-lastname').value
+        email: document.getElementById('form-email').value.trim(),
+        firstname: document.getElementById('form-firstname').value.trim(),
+        lastname: document.getElementById('form-lastname').value.trim()
     };
     console.log('Form data:', data);
 
@@ -15,7 +15,7 @@ document.getElementById('myForm').addEventListener('submit', async function(even
         headers: {
           'Content-Type': 'application/json'//indique au serveur qu'on envoie du JSON
         },
-        body: JSON.stringify(data)//convertit notre objet data en JSON et le met dans le body du POST HTTP
+        body: JSON.stringify(data)//convertit notre objet JS data en JSON et le met dans le body du POST HTTP
       });
 
       if (response.ok) {

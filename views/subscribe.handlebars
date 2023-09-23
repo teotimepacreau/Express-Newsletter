@@ -46,3 +46,13 @@
     </section>    
 </main>
 <script src="/javascripts/frontHandleSubscribe.js"></script><!-- sait automatiquement que c'est dans le folder public car précisé dans app.js-->
+<script type="speculationrules">
+{
+  "prerender": [
+    {
+      "source": "list",
+      "urls": ["unsubscribe"]
+    }
+  ]
+}
+</script>
