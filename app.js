@@ -5,6 +5,8 @@ const port = 3000
 const path = require('path')
 const sqlite3 = require("sqlite3")
 const { open } = require("sqlite")
+const handlebars = require("handlebars")
+const handlebarsHelper = require('./handlebarsHelper');
 
 //LE MIDDLEWARE APP.USE DANS APP.JS S'APPLIQUE A TOUTES LES ROUTES, INDEPENDAMMENT DE LURL ET DU TYPE DE REQUETE,  permet de parser le JSON data received in the form
 app.use(express.json());//If the Content-Type header is indeed application/json, the express.json() middleware kicks in. It reads the JSON data from the request body and parses it into a JavaScript object.

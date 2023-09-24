@@ -11,18 +11,14 @@ dotenv.config();
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-// TOUS LES PATHS
-
-// Read the file synchronously (or asynchronously, as needed)
-// Read the file synchronously
+// IMG LUS EN BASE64 POUR LES ENVOYER EN CID
 const binaryImg1 = fs.readFileSync(path.join(__dirname, '..', 'public/images/building1.png'), 'base64');
 const binaryImg2 = fs.readFileSync(path.join(__dirname, '..', 'public/images/building2.png'), 'base64');
 
-const emailTemplatePath = path.join(__dirname, "..", "views/layouts/emailtemplate.handlebars");
-const emailTemplate = fs.readFileSync(emailTemplatePath, "utf-8");
+// EMAIL TEMPLATE IN /layouts
+const emailTemplate = fs.readFileSync((path.join(__dirname, "..", "views/layouts/emailtemplate.handlebars")), "utf-8");
 
-const newsletterPath = path.join(__dirname,"..", "views/newsletter.handlebars");
-const newsletterContent = fs.readFileSync(newsletterPath, "utf-8");
+const newsletterContent = fs.readFileSync((path.join(__dirname, "..", "views/newsletter.handlebars")), "utf-8");
 
 // Register the "newsletter" partial
 handlebars.registerPartial('newsletter', newsletterContent);
@@ -30,6 +26,7 @@ handlebars.registerPartial('newsletter', newsletterContent);
 // Compile the Handlebars templates
 const emailTemplateCompiled = handlebars.compile(emailTemplate);
 const newsletterTemplateCompiled = handlebars.compile(newsletterContent);
+
 
 async function getSubscribers() {
   try{
@@ -51,16 +48,11 @@ const mailer = async ()=>{
 
     for (const subscriber of subscribers) {
       //remplace les variables de email.html
-      let personalizedContent = emailTemplateCompiled({
-        title: "The fictive brands newsletter",
-        firstname: subscriber.firstname, // Provide firstname and lastname directly
-        lastname: subscriber.lastname,
-      });
-      // let personalizedContent = newsletterContent
-      // .replace('{{lastname}}', subscriber.lastname)
-      // .replace('{{firstname}}', subscriber.firstname)
-      // // images en PJ car sinon ne s'affichent pas
+      let personalizedContent = newsletterContent
+      .replace('{{lastname}}', subscriber.lastname)
+      .replace('{{firstname}}', subscriber.firstname)
       
+      // images en PJ car sinon ne s'affichent pas
       const attachments = [
         {
           content: binaryImg1, // const à du fichier à joindre
@@ -94,17 +86,15 @@ const mailer = async ()=>{
         const sendMail = async () => {
           try {
             await sgMail.send(msg);
+            console.log("Emails sent successfully");
           } catch (error) {
             console.error(error);
-        
             if (error.response) {
               console.error(error.response.body)
             }
           }
-        };
-        
+        };  
         sendMail()
-        console.log("Emails sent successfully");
       }
       
       }catch(err){
