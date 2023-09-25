@@ -18,15 +18,10 @@ const binaryImg2 = fs.readFileSync(path.join(__dirname, '..', 'public/images/bui
 // EMAIL TEMPLATE IN /layouts
 const emailTemplate = fs.readFileSync((path.join(__dirname, "..", "views/layouts/emailtemplate.handlebars")), "utf-8");
 
-const newsletterContent = fs.readFileSync((path.join(__dirname, "..", "views/newsletter.handlebars")), "utf-8");
-
-// Register the "newsletter" partial
-handlebars.registerPartial('newsletter', newsletterContent);
+const newsletterTemplate = handlebars.compile(fs.readFileSync(path.join(__dirname, "..", "views/newsletter.handlebars"), "utf-8"));
 
 // Compile the Handlebars templates
 const emailTemplateCompiled = handlebars.compile(emailTemplate);
-const newsletterTemplateCompiled = handlebars.compile(newsletterContent);
-
 
 async function getSubscribers() {
   try{
@@ -48,9 +43,14 @@ const mailer = async ()=>{
 
     for (const subscriber of subscribers) {
       //remplace les variables de email.html
-      let personalizedContent = newsletterContent
-      .replace('{{lastname}}', subscriber.lastname)
-      .replace('{{firstname}}', subscriber.firstname)
+      const personalizedContent = newsletterTemplate({
+        firstname: subscriber.firstname,
+        lastname: subscriber.lastname,
+    });
+      const emailContent = emailTemplateCompiled({
+        title: "Welcome to the fictive brands newsletter",
+        content: personalizedContent,
+    });
       
       // images en PJ car sinon ne s'affichent pas
       const attachments = [
@@ -79,7 +79,7 @@ const mailer = async ()=>{
           email: process.env.FROM_EMAIL
         },
         subject: 'The fictive brands newsletter',
-        html: personalizedContent,
+        html: emailContent,
         attachments: attachments
         };
 
