@@ -15,13 +15,10 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 const binaryImg1 = fs.readFileSync(path.join(__dirname, '..', 'public/images/building1.png'), 'base64');
 const binaryImg2 = fs.readFileSync(path.join(__dirname, '..', 'public/images/building2.png'), 'base64');
 
-// EMAIL TEMPLATE IN /layouts
-const emailTemplate = fs.readFileSync((path.join(__dirname, "..", "views/layouts/emailtemplate.handlebars")), "utf-8");
+// Compiling emailtemplate and newsletter
+const emailTemplateCompiled = handlebars.compile(fs.readFileSync((path.join(__dirname, "..", "views/layouts/emailtemplate.handlebars")), "utf-8"));
 
-const newsletterTemplate = handlebars.compile(fs.readFileSync(path.join(__dirname, "..", "views/newsletter.handlebars"), "utf-8"));
-
-// Compile the Handlebars templates
-const emailTemplateCompiled = handlebars.compile(emailTemplate);
+const newsletterCompiled = handlebars.compile(fs.readFileSync(path.join(__dirname, "..", "views/newsletter.handlebars"), "utf-8"));
 
 async function getSubscribers() {
   try{
@@ -43,14 +40,14 @@ const mailer = async ()=>{
 
     for (const subscriber of subscribers) {
       //remplace les variables de email.html
-      const personalizedContent = newsletterTemplate({
+      const personalizedContent = newsletterCompiled({
         firstname: subscriber.firstname,
         lastname: subscriber.lastname,
-    });
+      });
       const emailContent = emailTemplateCompiled({
-        title: "Welcome to the fictive brands newsletter",
+        title: "The fictive brands newsletter n°1",
         content: personalizedContent,
-    });
+      });
       
       // images en PJ car sinon ne s'affichent pas
       const attachments = [

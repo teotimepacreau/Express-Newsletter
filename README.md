@@ -2,7 +2,7 @@
 Newsletter project built with NodeJS, Express and SQLite
 
 # Features : 
-1. Subscription logic : Users can subscribe on homepage by filling and sending the form : lastName, firstName and email are added to SQLite Database. A notif confirms or infirms the subscription ✅
+1. Subscription logic : Users can subscribe on homepage by filling and sending the form : lastName, firstName and email are added to SQLite Database. A notif confirms or infirms the subscription. An email confirms subscription and welcome new user. ✅
 2. Unsubscription logic : Users can unsubscribe on the /unsubscribe page. It updates the database accordingly by removing. Checks if email is already in the DB, if not sends an error notif to user✅
 3. Newsletter Templates : 
 - Each newsletter is created within a template using handlebars✅ ⚠️: anchor link to unsub at the bottom of the email is waiting for his definitive href

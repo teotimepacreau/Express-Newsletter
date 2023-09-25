@@ -10,7 +10,6 @@ dotenv.config()
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-
 router.get('/', (req, res)=>{
     res.render('subscribe',//trouve directement dans views le subscribe.handlebars grâce à notre config dans app.js 
     {title: "Subscribe"})
@@ -35,22 +34,21 @@ router.post('/', async (req, res, next)=>{
         console.log("Record inserted:", email, firstname, lastname); // Debug line
 
         // 1. Once the subscribed notif is sent, send a welcome email
-        let emailTemplate = fs.readFileSync((path.join(__dirname, "..", "views/layouts/emailtemplate.handlebars")),"utf-8");
 
-        let welcomeEmail = fs.readFileSync((path.join(__dirname,"..", "views/welcomeemail.handlebars")), "utf-8")
+        // 
+        let emailTemplateCompiled = handlebars.compile(fs.readFileSync((path.join(__dirname, "..", "views/layouts/emailtemplate.handlebars")),"utf-8"));
 
-        // Compile the emailtemplate in /layouts in order to get the content
-        const emailTemplateCompiled = handlebars.compile(emailTemplate);
+        let welcomeEmailCompiled = handlebars.compile(fs.readFileSync((path.join(__dirname,"..", "views/welcomeemail.handlebars")), "utf-8"))
 
-        const welcomeCompiled = handlebars.compile(welcomeEmail);
 
-        let personalizedContent = emailTemplateCompiled({
+        let personalizedContent = welcomeEmailCompiled({
+            firstname: firstname,
+            lastname: lastname,
+        })
+        let emailContent = emailTemplateCompiled({
             title: "Welcome to the fictive brands newsletter",
-            email: welcomeCompiled({
-                firstname: firstname,
-                lastname: lastname,
-            })
-        });
+            content : personalizedContent
+        })
 
         const msg = {
             to: email,
@@ -59,7 +57,7 @@ router.post('/', async (req, res, next)=>{
                 email: process.env.FROM_EMAIL
             },
             subject: "Welcome to the fictive brands newsletter",
-            html: personalizedContent
+            html: emailContent
         }
 
         const sendMail = async()=>{
