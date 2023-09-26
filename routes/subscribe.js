@@ -47,7 +47,7 @@ router.post('/', async (req, res, next)=>{
         })
         let emailContent = emailTemplateCompiled({
             title: "Welcome to the fictive brands newsletter",
-            content : personalizedContent
+            content: personalizedContent
         })
 
         const msg = {
@@ -63,6 +63,7 @@ router.post('/', async (req, res, next)=>{
         const sendMail = async()=>{
             try{
                 await sgMail.send(msg)
+                console.log(emailContent)
                 console.log("Welcome email sent successfully")
             }catch(error){
                 console.error(error)

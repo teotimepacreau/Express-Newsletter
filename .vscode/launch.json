@@ -11,7 +11,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}/routes/sendemail.js"
+            "program": "${workspaceFolder}/routes/subscribe.js"
         }
     ]
 }
