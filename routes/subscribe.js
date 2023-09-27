@@ -63,7 +63,6 @@ router.post('/', async (req, res, next)=>{
         const sendMail = async()=>{
             try{
                 await sgMail.send(msg)
-                console.log(emailContent)
                 console.log("Welcome email sent successfully")
             }catch(error){
                 console.error(error)

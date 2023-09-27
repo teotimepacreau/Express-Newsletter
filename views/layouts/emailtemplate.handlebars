@@ -38,27 +38,28 @@
         margin: 0;
         }
 
-        /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
-        ul[role='list'],
-        ol[role='list'] {
-        list-style: none;
+        li {
+            list-style-position: inside;
         }
 
         /* Set core body defaults */
         body {
-            font-family:'Roboto Flex', 'Segoe UI Variable Display', system-ui, sans-serif; word-spacing:normal;
-            line-height: 1.5;
+            font-family:'Roboto Flex', 'Segoe UI Variable Display', system-ui, sans-serif; word-spacing: normal;
         }
 
         /* Set shorter line heights on headings and interactive elements */
         h1, h2, h3, h4, {
-        line-height: 1.3;
+            line-height: 1.3;
         }
 
         /* Balance text wrapping on headings */
         h1, h2,
         h3, h4 {
-        text-wrap: balance;
+            text-wrap: balance;
+        }
+
+        p {
+            line-height: 1.5;
         }
 
         /* A elements that don't have a class get default styles */
@@ -107,18 +108,14 @@
         filter: drop-shadow(0 0 2rem carmine); 
         }
 
-        input { 
-        appearance: none; 
-                border: none; 
-                outline: none; 
-                border-bottom: .2rem solid var(--white); 
-                border-radius: .1rem .1rem; 
-                padding: .2rem .6ch;
-        }
         /* FIN DU CSS RESET */
         
         img {
             border-radius: 0.3rem;
+        }
+
+        .block {
+            margin-top: 1rem;
         }
 
         .hover1{
@@ -137,7 +134,7 @@
 
     <title>{{{ title }}}</title>
 </head>
-<body>
+<body style="background-color:#f3eee2">
         {{{ content }}}
 </body>
 </html>

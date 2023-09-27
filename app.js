@@ -43,6 +43,11 @@ app.use("/unsubscribe", unsubscribeRouter)
 const emailRouter = require('./routes/sendemail.js')
 app.use("/sendemail", emailRouter)
 
+//RENDER EMAIL CLIENT IN NEW TAB ROUTE
+const renderRouter = require('./routes/render.js')
+app.use("/render", renderRouter)
+
+
 //DB INIT
 const openDBandCreateTable = async () => {
   // open DB : if there is no database.db it creates it
