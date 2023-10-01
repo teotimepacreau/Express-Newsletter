@@ -69,6 +69,7 @@ button {
   --white: oklch(100% 0 120);
   --orange: oklch(90% 0.37 85 / 85%);
   --orangeshadow:oklch(80% 0.3 85 / 55%);
+  --yellow: oklch(87.82% 0.1933 115.55);
   --green: oklch(20% 0.3 140);
   --rythme: 1rem;
 }
@@ -102,18 +103,18 @@ p {
 /* components reutilisable */
 
 *:focus-visible{
-  outline: 0.1px ridge var(--orange);
-  filter: drop-shadow(0 0 2rem var(--orangeshadow));
+  transition: box-shadow 0.3s ease;
+  outline: 3px chartreuse solid;
+  box-shadow: 0 0 7px 0px chartreuse;
 }
 
 button:focus-visible{
   outline-offset: 0.8ex;
-  outline-width: 2px;
 }
 
 a:focus-visible{
-  outline-width: 2px;
   outline-offset: 0.8ex;
+  box-shadow: none;
 }
 
 
