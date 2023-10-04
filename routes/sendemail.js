@@ -12,8 +12,7 @@ dotenv.config();
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 // IMG LUS EN BASE64 POUR LES ENVOYER EN CID
-const binaryImg1 = fs.readFileSync(path.join(__dirname, '..', 'public/images/building1.png'), 'base64');
-const binaryImg2 = fs.readFileSync(path.join(__dirname, '..', 'public/images/building2.png'), 'base64');
+const binaryImg1 = fs.readFileSync(path.join(__dirname, '..', 'public/images/layout1.png'), 'base64');
 
 // Compiling emailtemplate and newsletter
 const emailTemplateCompiled = handlebars.compile(fs.readFileSync((path.join(__dirname, "..", "views/layouts/emailtemplate.handlebars")), "utf-8"));
@@ -45,7 +44,7 @@ const mailer = async ()=>{
         lastname: subscriber.lastname,
       });
       const emailContent = emailTemplateCompiled({
-        title: "The fictive brands newsletter n°1",
+        title: "Feuillu, the newsletter unveiling insights of inspirational website layouts",
         content: personalizedContent,
       });
       
@@ -53,19 +52,11 @@ const mailer = async ()=>{
       const attachments = [
         {
           content: binaryImg1, // const à du fichier à joindre
-          cid: 'building1', // required to cid HTML
-          filename: 'building1',//je nomme comme je veux
+          cid: 'layout1', // required to cid HTML
+          filename: 'layout1',//je nomme comme je veux
           type: 'image/jpeg',
           disposition: 'inline',
-          content_id: 'building1',//obligé de mettre pour que la disposition foncttionne
-        },
-        {
-          content: binaryImg2, // const à du fichier à joindre
-          cid: 'building2', // required to cid HTML
-          filename: 'building2',//je nomme comme je veux
-          type: 'image/jpeg',
-          disposition: 'inline',
-          content_id: 'building2',//obligé de mettre pour que la disposition foncttionne
+          content_id: 'layout1',//obligé de mettre pour que la disposition foncttionne
         },
       ];
 
@@ -75,7 +66,7 @@ const mailer = async ()=>{
           name: 'Teotime Pacreau',
           email: process.env.FROM_EMAIL
         },
-        subject: 'The fictive brands newsletter',
+        subject: '💻 • Feuillu, the website layouts newsletter • Issue 1',
         html: emailContent,
         attachments: attachments
         };
@@ -83,7 +74,7 @@ const mailer = async ()=>{
         const sendMail = async () => {
           try {
             await sgMail.send(msg);
-            console.log("Emails sent successfully");
+            console.log("Email sent successfully");
           } catch (error) {
             console.error(error);
             if (error.response) {
@@ -109,16 +100,6 @@ router.get("/", async (req, res) => {
     console.error("Error fetching subscribers to populate variables in Newsletter", err);
     res.status(500).send("Internal Server Error");
   }
-});
-
-
-router.get("/showhtml", (req, res) => {
-  res.render("newsletter", {
-
-
-    title: "The 35mm missive n°1",
-    layout: "emailtemplate",
-  });
 });
 
 module.exports = router;
