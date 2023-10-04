@@ -71,6 +71,7 @@ button {
   --orangeshadow:oklch(80% 0.3 85 / 55%);
   --yellow: oklch(87.82% 0.1933 115.55);
   --green: oklch(20% 0.3 140);
+  --focus: oklch(70% 0.19 80);
   --rythme: 1rem;
 }
 
@@ -104,8 +105,8 @@ p {
 
 *:focus-visible{
   transition: box-shadow 0.3s ease;
-  outline: 3px chartreuse solid;
-  box-shadow: 0 0 7px 0px chartreuse;
+  outline: 2px var(--focus) solid;
+  box-shadow: 0 0 5px 1px var(--focus);
 }
 
 button:focus-visible{
