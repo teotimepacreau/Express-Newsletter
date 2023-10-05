@@ -11,8 +11,6 @@ dotenv.config();
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-// IMG LUS EN BASE64 POUR LES ENVOYER EN CID
-// const binaryImg1 = fs.readFileSync(path.join(__dirname, '..', 'public/images/layout1.png'), 'base64');
 
 // Compiling emailtemplate and newsletter
 const emailTemplateCompiled = handlebars.compile(fs.readFileSync((path.join(__dirname, "..", "views/layouts/emailtemplate.handlebars")), "utf-8"));
@@ -47,18 +45,6 @@ const mailer = async ()=>{
         title: "Feuillu, the newsletter unveiling insights of inspirational website layouts",
         content: personalizedContent,
       });
-      
-      // images en PJ car sinon ne s'affichent pas
-      // const attachments = [
-      //   {
-      //     content: binaryImg1, // const à du fichier à joindre
-      //     cid: 'layout1', // required to cid HTML
-      //     filename: 'layout1',//je nomme comme je veux
-      //     type: 'image/jpeg',
-      //     disposition: 'inline',
-      //     content_id: 'layout1',//obligé de mettre pour que la disposition foncttionne
-      //   },
-      // ];
 
       const msg = {
         to: subscriber.email,
