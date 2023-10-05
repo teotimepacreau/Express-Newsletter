@@ -11,7 +11,7 @@ dotenv.config()
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 router.get('/', (req, res)=>{
-    res.render('subscribe',//trouve directement dans views le subscribe.handlebars grâce à notre config dans app.js 
+    res.render('subscribe',//trouve directement dans views subscribe.handlebars grâce à notre config dans app.js 
     {title: "Subscribe"})
 })
 // récupération de la request POST du formulaire subscribe qui n'est plus en JSON grace au middleware dans app.js : app.use(express.json())
