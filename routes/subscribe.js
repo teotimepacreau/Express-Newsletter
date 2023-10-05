@@ -56,7 +56,7 @@ router.post('/', async (req, res, next)=>{
                 name: "Teotime Pacreau",
                 email: process.env.FROM_EMAIL
             },
-            subject: "Welcome to the fictive brands newsletter",
+            subject: "💻 • Welcome to Feuillu, the website layouts newsletter",
             html: emailContent
         }
 

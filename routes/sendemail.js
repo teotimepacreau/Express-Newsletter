@@ -11,8 +11,6 @@ dotenv.config();
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-const imgSrc = "https://github.com/teotimepacreau/Images/blob/main/layout1.png"
-
 // IMG LUS EN BASE64 POUR LES ENVOYER EN CID
 // const binaryImg1 = fs.readFileSync(path.join(__dirname, '..', 'public/images/layout1.png'), 'base64');
 
@@ -44,7 +42,6 @@ const mailer = async ()=>{
       const personalizedContent = newsletterCompiled({
         firstname: subscriber.firstname,
         lastname: subscriber.lastname,
-        imgSrc: imgSrc
       });
       const emailContent = emailTemplateCompiled({
         title: "Feuillu, the newsletter unveiling insights of inspirational website layouts",
