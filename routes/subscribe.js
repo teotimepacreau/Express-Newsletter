@@ -46,7 +46,7 @@ router.post('/', async (req, res, next)=>{
             lastname: lastname,
         })
         let emailContent = emailTemplateCompiled({
-            title: "Welcome to the fictive brands newsletter",
+            title: "💻 ● Welcome to Feuillu, the newsletter decrypting website design trends",
             content: personalizedContent
         })
 
@@ -56,7 +56,7 @@ router.post('/', async (req, res, next)=>{
                 name: "Teotime Pacreau",
                 email: process.env.FROM_EMAIL
             },
-            subject: "💻 • Welcome to Feuillu, the website layouts newsletter",
+            subject: "💻 ● Welcome to Feuillu, the newsletter decrypting website design trends",
             html: emailContent
         }
 

@@ -52,7 +52,7 @@ const mailer = async ()=>{
           name: 'Teotime Pacreau',
           email: process.env.FROM_EMAIL
         },
-        subject: '💻 • Feuillu, the website layouts newsletter • Issue 1',
+        subject: '#1 ● 💻 Feuillu, the website layouts newsletter',
         html: emailContent
         };
 
