@@ -20,8 +20,10 @@ Newsletter project built with NodeJS, Express and SQLite
 10. Deploy on fly.io🚧
 11. DB disaster recovery with filestream.io🚧
 
-# 🛠️ 
+# 🛠️
+- CSS : container queries, grid, flexbox... 
+- HTML : form validation, semantic...
+- Javascript
 - NodeJS
 - Express
 - SQLite database
-- VanillaJS, CSS, HTML

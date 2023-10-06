@@ -538,8 +538,13 @@ input {
   grid-row: 4 / 5;
   background-color: var(--secondary);
   display: flex;
+  gap: var(--rythme);
   align-items: center;
   justify-content: space-between;
+}
+
+#unsub-backtosubscribe-bento #backlink-icon {
+  text-decoration: none;
 }
 
 #unsub-backtosubscribe-bento i {
@@ -549,6 +554,13 @@ input {
   border-radius: 10%;
   color: var(--secondary);
   box-shadow: -1px 1px 5px 2px var(--primaryshadow);
+  transition: all 0.3s ease;
+}
+
+#unsub-backtosubscribe-bento i:hover{
+  color: var(--onprimary);
+  background-color: var(--secondary);
+  border: 1px solid var(--onprimary);
 }
 
 #link-go-to-subscribe{
@@ -572,4 +584,27 @@ input {
 }
 
 
-
+/* MEDIA QUERIES */
+@media (width < 1300px){
+  #unsub-hero-section{
+    display: none;
+  }
+  #unsub-page{
+    display: unset;
+  }
+  #unsub-bentos-section{
+    display: flex;
+    flex-direction: column;
+    max-width: 60ch;
+    margin-inline: auto;
+  }
+  #unsub-form-bento{
+    order: 1;
+  }
+  #unsub-content-bento{
+    order: 2;
+  }
+  #unsub-backtosubscribe-bento{
+    order: 3;
+  }
+}
