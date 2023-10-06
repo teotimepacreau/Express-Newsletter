@@ -75,9 +75,33 @@ button {
   --rythme: 1rem;
 }
 
+@font-face {
+  font-family: "Paysage-Black";
+  src: local("Paysage-Black"),
+  url("/fonts/Paysage-Black.woff2") format("woff2");
+  font-display: swap
+}
+
+@font-face {
+  font-family: "Paysage-Bold";
+  src: local("Paysage-Bold"),
+  url("/fonts/Paysage-Bold.woff2") format("woff2");
+  font-display: swap
+
+}
+
+@font-face {
+  font-family: "Paysage-Regular";
+  src: local("Paysage-Regular"),
+  url("/fonts/Paysage-Regular.woff2") format("woff2");
+  font-display: swap
+
+}
+
+
 body {
   background-color: var(--darkbg);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'Paysage-Regular', sans-serif;
   color: var(--onprimary);
 }
 
@@ -90,13 +114,17 @@ h1 {
 }
 
 h2 {
+  letter-spacing: 0.04rem;
   font-size: calc(1.5*var(--rythme));
   line-height: 1.3;
-  font-weight: 600;
 }
 
 p {
   line-height: 1.5;
+}
+
+p, li, a {
+  font-size: 1.1rem;
 }
 
 /* PAGE SUBSCRIBE */
@@ -172,6 +200,7 @@ a:focus-visible{
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: var(--rythme);
   padding-top: var(--rythme);
 }
 
@@ -186,9 +215,12 @@ a:focus-visible{
   background-color: var(--tertiary);
   grid-column: 3 / 4;
   grid-row: 1 / 3;
-  display: grid;
-  grid-auto-flow: column;
-  column-gap: calc(3*var(--rythme));
+  display: flex;
+  gap: calc(2*var(--rythme));
+}
+
+#form-bento > * {
+  flex: 1 1 50%;
 }
 
 #form-bento-left img {
@@ -228,29 +260,29 @@ input {
 }
 
 #submit-btn{
+  font-size: 1.5rem;
+  font-family: "Paysage-Bold", sans-serif;
+  letter-spacing: -0.05rem;
   display: inline-flex;
-  flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  gap: 1ch;
-  font-weight: 600;
+  gap: var(--rythme);
   text-align: left;
   box-shadow: -1px 1px 5px 1px var(--primaryshadow);
   background-color: var(--onprimary);
   color: var(--primary);
-  min-width: calc(0.5*var(--rythme));
+  min-width: var(--rythme);
   cursor: pointer;
   border: 1px ridge var(--onprimary);
   border-color: transparent;
-  padding: 1ex 0ex;
-  padding-left: 1ex;
+  padding: 1ex 1.25ex;
   border-radius: 1rem;
   transition: background-color 0.3s ease-out;
 }
 
 #submit-btn i {
   font-size: calc(1.5*var(--rythme));
-  padding: 0.3ch;
+  padding: 0.75rem;
   border-radius: 50%;
   background-color: var(--primaryicon);
   color: var(--onprimary);
@@ -274,20 +306,12 @@ input {
 }
 
 #unsubscribe-link{
-  display: inline-block;
   color: var(--onprimary);
-  border-radius: 0.02rem;
-  transition: padding 0.3s ease-out, background-color 0.3s ease-out;
+  transition: text-underline-offset 0.1s ease;
 }
 
 #unsubscribe-link:hover{
-  background-color: var(--white);
-  border-radius: 0.3rem;
-  color: var(--tertiary);
-  padding: 1ex;
-  font-weight: 500;
   text-underline-offset: 0.4ex;
-  text-decoration-skip-ink: none;
   text-decoration-thickness: 0.4ex;
 }
 
@@ -313,7 +337,7 @@ input {
   padding-block: var(--rythme);
   display: flex;
   flex-direction: column;
-  gap: var(--rythme);
+  gap: calc(2*var(--rythme));
 }
 
 #issues-flexer li {
@@ -326,13 +350,13 @@ input {
 
 #issue-name {
   min-width: max-content;
+  font-family: "Paysage-Bold", sans-serif;
   flex-shrink: 0;
-  padding-block: 0.4ex;
-  padding-inline: 1.2ex;
+  padding-block: 0.5ex;
+  padding-inline: 1ex;
   background-color: var(--onprimary);
   color: var(--primaryicon);
-  border-radius: 0.5rem;
-  font-weight: 500;
+  border-radius: 0.25rem;
 }
 
 #issue-divider {
@@ -379,6 +403,62 @@ input {
   background-color: var(--orange);
   color: var(--darkbg);
 }
+
+/* CONTAINER QUERIES */
+#form-bento {
+  container-type: inline-size;
+  container-name: form-bento;
+}
+@container form-bento (width < 400px){
+  #form-bento-left{
+    display: none
+  }
+}
+
+#title-bento {
+  container-type: inline-size;
+  container-name: title-bento;
+}
+
+@container title-bento (width < 500px){
+  #title-bento-flex-bottom{
+    flex-direction: column;
+  }
+  #title-bento-flex-bottom > *{
+    flex: 1 1;
+  }
+  #icon {
+    display: flex;
+    justify-content: right;
+    width: 100%;
+    border-radius: 0.3rem;
+    background-color: var(--onprimary);
+  }
+  #icon i {
+    box-shadow: unset;
+  }
+}
+
+/* MEDIA QUERIES */
+@media (width < 900px){
+  #subscribe-page {
+    display: flex;
+    flex-direction: column;
+  }
+  #title-bento{
+    order: 0;
+  }
+  #form-bento{
+    order: 1;
+  }
+  #image-bento{
+    order: 2;
+  }
+  #issues-bento{
+    order: 3;
+  }
+}
+
 
 /* PAGE UNSUBCRIBE */
 
@@ -429,8 +509,9 @@ input {
 
 #unsubscribe-btn {
   box-shadow: -1px 1px 2px 0.5px var(--primaryshadow);
-  font-weight: 600;
+  font-family: "Paysage-Bold", sans-serif;
   display: flex;
+  align-items: center;
   gap: 1ch;
   font-size: 1rem;
   align-items: center;
@@ -489,3 +570,6 @@ input {
 #unsub-content-bento > :not(:first-child) {
   margin-top: var(--rythme);
 }
+
+
+
