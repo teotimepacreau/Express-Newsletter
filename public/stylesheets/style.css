@@ -1,58 +1,111 @@
-/* CSS RESET */
 /* Box sizing rules */
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+   margin: 0; 
+   padding: 0;
 }
 
-/* Remove default list styles */
-ul, ol, li {
+/* Prevent font size inflation */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+   scroll-behavior: smooth;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+body, h1, h2, h3, h4, p,
+figure, blockquote, dl, dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
   list-style: none;
 }
 
 /* Set core body defaults */
 body {
-  text-rendering: optimizeLegibility;
-}    
-
-/* Set core root defaults */
-html {
-  scroll-behavior: smooth;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  min-height: 100dvh;
+  line-height: 1.5;
 }
-    
-/* A element that don't have a class get default styles */
+
+/* Set shorter line heights on headings and interactive elements */
+h1, h2, h3, h4 {
+  line-height: 1.3;
+}
+
+/* Balance text wrapping on headings */
+h1, h2,
+h3, h4 {
+  text-wrap: balance;
+}
+
+/* A elements that don't have a class get default styles */
 a {
-  color: inherit;
-  text-decoration-skip-ink: auto;
+  color: currentColor;
   text-underline-offset: 0.3ex;
 }
-    
+
+button { 
+   cursor: pointer; 
+ }
+
 /* Make images easier to work with */
 img,
 picture {
-  max-width: 100%; /* img should never overflow past the available space*/
-  display: block; /* avoid blank bottom*/
-  height: auto;/*preserve aspect ratio*/
+  max-width: 100%;
+  display: block;
 }
 
-/* More consistent, styleable hr*/
-hr {
-  border-width: 1px 0 0 0;
-  color: inherit;
-  height: 0;
-  overflow: visible;
-}
-
-/* Remove built-in form typography styles */
-input, button, textarea, select {
+/* Inherit fonts for inputs and buttons */
+input, button,
+textarea, select {
   font: inherit;
 }
 
-button {
-  cursor: pointer;
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+  min-height: 10rem;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 5ex;
+}
+
+/* More consistent, styleable hr*/ 
+ hr { 
+   border-width: 1px 0 0 0; 
+   color: inherit; 
+   height: 0; 
+   overflow: visible; 
+ }
+
+*:focus-visible{
+  transition: box-shadow 0.3s ease;
+  outline: 3px chartreuse solid;
+  box-shadow: 0 0 7px 0px chartreuse;
+}
+
+/* FOCUS ON LIGHT BACKGROUNDS  */
+/* *:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px hsla(210, 52%, 42%, 1.00), 
+              0 0 0 .6rem hsla(200, 72%, 83%, 0.75);
+} */
+
+button:focus-visible{
+  outline-offset: 0.8ex;
+}
+
+a:focus-visible{
+  outline-offset: 0.8ex;
+  box-shadow: none;
 }
 
 :root {
@@ -76,32 +129,17 @@ button {
 }
 
 @font-face {
-  font-family: "Paysage-Black";
-  src: local("Paysage-Black"),
-  url("/fonts/Paysage-Black.woff2") format("woff2");
-  font-display: swap
+  font-family: 'FixelVariable';
+  src: local("FixelVariable"),
+  url("/fonts/FixelVariable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-stretch: 87.501% 100%;
+  font-display: swap;
 }
-
-@font-face {
-  font-family: "Paysage-Bold";
-  src: local("Paysage-Bold"),
-  url("/fonts/Paysage-Bold.woff2") format("woff2");
-  font-display: swap
-
-}
-
-@font-face {
-  font-family: "Paysage-Regular";
-  src: local("Paysage-Regular"),
-  url("/fonts/Paysage-Regular.woff2") format("woff2");
-  font-display: swap
-
-}
-
 
 body {
   background-color: var(--darkbg);
-  font-family: 'Paysage-Regular', sans-serif;
+  font-family: 'FixelVariable', sans-serif;
   color: var(--onprimary);
 }
 
@@ -260,12 +298,14 @@ input {
 }
 
 #submit-btn{
-  font-size: 1.5rem;
-  font-family: "Paysage-Bold", sans-serif;
-  letter-spacing: -0.05rem;
+  font-size: 1.25rem;
+  text-wrap: balance;
+  line-height: normal;
+  font-family: "FixelVariable", sans-serif;
+  font-weight: 700;
   display: inline-flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   gap: var(--rythme);
   text-align: left;
   box-shadow: -1px 1px 5px 1px var(--primaryshadow);
@@ -275,7 +315,7 @@ input {
   cursor: pointer;
   border: 1px ridge var(--onprimary);
   border-color: transparent;
-  padding: 1ex 1.25ex;
+  padding: 1rem;
   border-radius: 1rem;
   transition: background-color 0.3s ease-out;
 }
@@ -308,6 +348,7 @@ input {
 #unsubscribe-link{
   color: var(--onprimary);
   transition: text-underline-offset 0.1s ease;
+  opacity: 0.8;
 }
 
 #unsubscribe-link:hover{
@@ -350,13 +391,13 @@ input {
 
 #issue-name {
   min-width: max-content;
-  font-family: "Paysage-Bold", sans-serif;
+  font-weight: 600;
   flex-shrink: 0;
-  padding-block: 0.5ex;
-  padding-inline: 1ex;
+  line-height: 1;
+  padding: 0.5rem;
   background-color: var(--onprimary);
   color: var(--primaryicon);
-  border-radius: 0.25rem;
+  border-radius: 0.3rem;
 }
 
 #issue-divider {
@@ -431,11 +472,14 @@ input {
     display: flex;
     justify-content: right;
     width: 100%;
+    padding: unset;
     border-radius: 0.3rem;
     background-color: var(--onprimary);
+    opacity: 0.9;
   }
   #icon i {
     box-shadow: unset;
+    padding: 0.2rem;
   }
 }
 
@@ -508,12 +552,14 @@ input {
 }
 
 #unsubscribe-btn {
+  text-align: left;
+  font-size: 1.25rem;
   box-shadow: -1px 1px 2px 0.5px var(--primaryshadow);
-  font-family: "Paysage-Bold", sans-serif;
+  font-family: "FixelVariable", sans-serif;
+  font-weight: 700;
   display: flex;
   align-items: center;
-  gap: 1ch;
-  font-size: 1rem;
+  gap: 1rem;
   align-items: center;
   justify-content: center;
   background-color: var(--onprimary);
@@ -522,8 +568,8 @@ input {
   cursor: pointer;
   border: 0.1ex solid;
   border-color: transparent;
-  padding: 1ex 2ex;/*hauteur des minuscules souvent appelée hauteur "x" lowercase*/
-  border-radius: 0.3rem;
+  padding: 1rem;/*hauteur des minuscules souvent appelée hauteur "x" lowercase*/
+  border-radius: 1rem;
   transition: background-color 0.3s ease-out;
 }
 

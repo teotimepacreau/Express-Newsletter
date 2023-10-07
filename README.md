@@ -1,7 +1,23 @@
 # Express-Newsletter
-Newsletter project built with NodeJS, Express and SQLite
+A fully functional newsletter website, where you can subscribe and receive a welcoming email, and then receive periodically the newsletter. It also allows unsubscribing through a dedicated page.
 
-# Features : 
+# 🛠️ Built with :
+- CSS : container queries, variable font, grid, flexbox... 
+- HTML : form validation, semantic...
+- Javascript
+- NodeJS
+- Express
+- SQLite database
+
+# What I learned :
+- how to use Express
+- create and manage a SQL database
+- handle HTTP requests and responses
+- setup backend routes and controllers
+- HTML emails (different supports of the clients, specific CSS rules applying to it...)
+- create templates for content
+
+# In-depth details of the project : 
 1. Subscription logic : Users can subscribe on homepage by filling and sending the form : lastName, firstName and email are added to SQLite Database. A notif confirms or infirms the subscription. An email confirms subscription and welcome new user. ✅
 2. Unsubscription logic : Users can unsubscribe on the /unsubscribe page. It updates the database accordingly by removing. Checks if email is already in the DB, if not sends an error notif to user✅
 3. Newsletter Templates : 
@@ -20,10 +36,4 @@ Newsletter project built with NodeJS, Express and SQLite
 10. Deploy on fly.io🚧
 11. DB disaster recovery with filestream.io🚧
 
-# 🛠️
-- CSS : container queries, grid, flexbox... 
-- HTML : form validation, semantic...
-- Javascript
-- NodeJS
-- Express
-- SQLite database
+
