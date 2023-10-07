@@ -7,7 +7,7 @@ A fully functional newsletter website, where you can subscribe and receive a wel
 - Javascript
 - NodeJS
 - Express
-- SQLite database
+- SQLite database and SQL queries
 
 # What I learned :
 - how to use Express
@@ -16,6 +16,7 @@ A fully functional newsletter website, where you can subscribe and receive a wel
 - setup backend routes and controllers
 - HTML emails (different supports of the clients, specific CSS rules applying to it...)
 - create templates for content
+- deploy a front & back on a server
 
 # In-depth details of the project : 
 1. Subscription logic : Users can subscribe on homepage by filling and sending the form : lastName, firstName and email are added to SQLite Database. A notif confirms or infirms the subscription. An email confirms subscription and welcome new user. ✅
