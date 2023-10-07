@@ -2,21 +2,22 @@
 A fully functional newsletter website, where you can subscribe and receive a welcoming email, and then receive periodically the newsletter. It also allows unsubscribing through a dedicated page.
 
 # 🛠️ Built with :
-- CSS : container queries, variable font, grid, flexbox... 
-- HTML : form validation, semantic...
-- Javascript
+- CSS : all UI design is from me, container queries, variable font, grid, flexbox... 
+- HTML : form best practice and validation, semantic...
+- Javascript : async/await, fetch API
 - NodeJS
 - Express
 - SQLite database and SQL queries
 
 # What I learned :
 - how to use Express
-- create and manage a SQL database
+- create and manage SQL database
 - handle HTTP requests and responses
+- work asynchronously and handle errors in Node.JS
 - setup backend routes and controllers
-- HTML emails (different supports of the clients, specific CSS rules applying to it...)
-- create templates for content
-- deploy a front & back on a server
+- HTML emails (different support rules of the mail clients, specific CSS rules applying to it...)
+- create templating for content
+- deploy a front & back on an online server
 
 # In-depth details of the project : 
 1. Subscription logic : Users can subscribe on homepage by filling and sending the form : lastName, firstName and email are added to SQLite Database. A notif confirms or infirms the subscription. An email confirms subscription and welcome new user. ✅
