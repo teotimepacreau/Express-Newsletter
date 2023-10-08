@@ -47,6 +47,10 @@ app.use("/sendemail", emailRouter)
 const renderRouter = require('./routes/render.js')
 app.use("/render", renderRouter)
 
+// RENDER ISSUE
+const issueRouter = require('./routes/issue.js')
+app.use('/issue', issueRouter)
+
 
 //DB INIT
 const openDBandCreateTable = async () => {
