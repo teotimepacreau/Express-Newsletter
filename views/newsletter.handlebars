@@ -1,23 +1,116 @@
-<div class="container" style="color: #473e3e; margin-inline: auto; margin-block: 3rem; padding: 1rem; max-width: 70ch;">
-        <div class="title-block">
-            <h1 class="hover1" style="font-family: 'BricolageGrotesque-Bold', sans-serif; font-size: 4rem; letter-spacing: -0.05rem; line-height: 1.3;">The 35mm missive</h1>
-            <p style="margin-top: 1rem;">Dear {{firstname}} {{lastname}},</p>
-            <p>In today's issue, we will review some of the best 35mm photos you can find, and the stories behind the pics.</p>
-        </div>
-        <div class="h2" style="margin-top: 2rem;">
-            <h2 style="font-family: 'BricolageGrotesque-Bold', sans-serif; font-size: 3rem; font-weight: 500; letter-spacing: -0.01rem; line-height: 1.3; background-color: #473e3e; color: #f3eee2; border-radius: 0.2rem; display: inline; padding: 1rem; opacity: 0.75;">Singapore</h2>
-        </div>
-        <div class="img-block" style="display: flex; column-gap: 1rem; margin-top: 1rem;">
-            <div class="flex-img" style="position: relative;">
-                <img src="cid:image1" alt="A picture of a San Francisco red mansion">
-            </div>
-            <div class="flex-img">
-                <img src="cid:image2" alt="A picture of a San Francisco blue mansion">
-            </div>
-            
-        </div>
-        <div class="main-block" style="margin-top: 2rem;">
-            <p>Shop-houses are records of Singapore's multicultural history. After its founding in 1819 by British politician and empire builder Stamford Raffles, <strong>the city grew into a powerful entrepôt</strong>, attracting merchants and traders from all over the world. They brought their architectural tastes with them, and left their mark on the shop-houses they inhabited. The dwellings in Joo Chiat were built by Peranakans, people of mixed Chinese and Malay descent who settled in Singapore and whose culture was a rich blend of Chinese, Malaysian, Indonesian, and European influences. Elsewhere in the city you can see shop-houses with Islamic latticework, rococo curlicues, Dutch gables, and French shutters.The richness of these buildings did not comport with my preconceptions, which I quickly realized were out of date. It is true that more than 50 percent of Singapore's old city was demolished by the march of modernity between the 1970s and 90s. It is also true that much of the urban sprawl has the flavorless internationalism of an airport terminal. But in the past decade Singapore has entered a more preservationist phase, with shop-houses being restored and renovated all over town—and snapped up at eye-watering prices.</p>
-        </div>
-        <a style="color: inherit; text-decoration-color: #8b7643;" href="/unsubscribe">Unsubscribe</a>
+<div
+  class="container"
+  style="margin: 0 auto; color:#fcfcfc; max-width: 65ch; font-family:'Roboto Flex', 'Segoe UI Variable Display', system-ui, sans-serif; word-spacing: normal;"
+>
+  <a
+    class="block"
+    style="font-size: 1rem; opacity: 0.7;display: block; margin-top: 1rem; text-align: center; color: rgb(45, 45, 45); text-underline-offset: 0.2rem; text-decoration-thickness: 0.1rem"
+    href="http://localhost:3000/render?type=newsletter"
+    target="_blank"
+  >Read this mail in your browser</a>
+  <div
+    class="block"
+    style="margin-top: 1rem !important;
+            background-color: #664700 !important;
+            border-radius: 1.5rem !important;
+            padding: 2rem !important;"
+  >
+    <h1
+      style="margin-top: 0 !important; margin-bottom: 0 !important; font-size: 2rem; font-weight: 900; line-height: 1.2 !important; text-wrap: balance;"
+    >
+      Welcome to
+      <span
+        style="background-color: #fcfcfc; color:#664700; display: inline-block; padding-left: 0.4rem; padding-right: 0.4rem; margin-top: -0.1rem; margin-bottom: -0.1rem; border-radius: 0.3rem"
+      >Feuillu</span>
+      the website layouts newsletter !
+    </h1>
+    <p style="margin-top: 1rem !important; line-height: 1.5 !important;">Dear
+      {{firstname}}
+      {{lastname}},</p>
+    <p style="line-height: 1.5">In today's issue :
+      <ul>
+        <li>
+          <a target="_blank" style="color: inherit; text-underline-offset: 0.2rem; text-decoration-thickness: 0.1rem" href="https://studyhall.design/about">studyhall.design</a> website, a brutalist
+          and minimalist homepage.</p>
+        </li>
+        <li>ressources about web components, icons library.</li>
+      </ul> 
+  </div>
+
+  <div
+    class="img-block"
+    style="overflow: hidden; margin-top: 1rem; border-top-left-radius: 1.5rem !important; border-top-right-radius: 1.5rem !important;"
+  >
+    <a target="_blank" style="color: inherit; text-decoration: none;" href="https://studyhall.design/about">
+      <img
+        style="max-width: 100%; object-fit: cover;
+          display: block;"
+        src="https://i.imgur.com/s6JoCmx.jpeg"
+        alt="The studyhall.design website : short paragraphs depicting the team, using svg's, serif and a combination of black and green colors."
+      />
+    </a>
+  </div>
+  <div
+    class="block"
+    style=" background-color: #664700 !important;border-bottom-left-radius: 1.5rem !important; border-bottom-right-radius: 1.5rem !important;  padding: 2rem !important;"
+  > <h2 style="letter-spacing: 0.03rem;line-height: 1.3; font-size: 1.75rem">The case study: <a target="_blank" style="color: inherit; text-underline-offset: 0.2rem;font-size: inherit !important; text-decoration-skip-ink:none; text-decoration-thickness: 0.1rem" href="https://studyhall.design/about">studyhall.design</a></h2>
+    <p style="display: block; margin-top: 1rem !important; line-height: 1.5"><strong style="font-weight: 700;">In short</strong> — An uncommon use of svg's, serif font, bicolor color scheme. </p>
+    <p style="display: block; margin-top: 1rem !important; line-height: 1.5"><strong style="font-weight: 700;">Typography</strong> — The sans-serif is <a target="_blank" style="color: inherit; text-underline-offset: 0.2rem; text-decoration-thickness: 0.1rem" href="https://pangrampangram.com/products/neue-montreal">Neue Montreal</a>, a versatile Grotesque font with the spirit of a display font. It feels very modern and polished. The serif is <a target="_blank" style="color: inherit; text-underline-offset: 0.2rem; text-decoration-thickness: 0.1rem" href="https://www.grillitype.com/typeface/gt-alpina">GT ALPINA</a>, a font that resurrects old-style shapes (the V and the H are particulary impactful) and gives an aerian style to the page. Serif fonts works particularly well in italic like on this layout contrary to sans-serif that always feel weird when displayed in italic.</p>
+    <p style="display: block; margin-top: 1rem !important; line-height: 1.5"><strong style="font-weight: 700;">SVG's</strong> — They seem to be handmade by the designers of the company. It works very well because they are simply added to the meaning of the sentences so the reader don't ask himself what they mean.Matching their color with the serif font and placing them in the same group make it more coherent. On the web, using symbols/icons allow simplicity and evocation rather than complexity.</p>
+    <p style="display: block; margin-top: 1rem !important; line-height: 1.5"><strong style="font-weight: 700;">Colors</strong> — Only two colors are used : green and white. It feels brutal but works well with a dark background. Notice that the green is not neonesque or bright but an appeasing tone-green.</p>
+    <p style="display: block; margin-top: 1rem !important; line-height: 1.5"><strong style="font-weight: 700;">Layout</strong> — The hero section come with a succession of left and right sided text. A rarely seen bold choice that allow to create breathing space and avoid redundancy.</p>
+    <p style="display: block; margin-top: 1rem !important; line-height: 1.5"><strong style="font-weight: 700;">Cursor</strong> — The circle replacing the cursor is made through a library like <a style="color: inherit; text-underline-offset: 0.2rem; text-decoration-thickness: 0.1rem" target="_blank" href="https://github.com/Cuberto/mouse-follower">Cuberto's mouse follower</a>, it's a quite simple JS program that lets you manipulate the color, the shape, the offset, the delay... to create a custom made one. It always works well on creative website but would not recommend on most "classic" websites due to accessibility issues and impact on performance.</p>
+  </div>
+  
+<div
+    class="block"
+    style="margin-top: 1rem; background-color: #00537c !important; border-radius: 1.5rem;  padding: 2rem !important;"
+  > <h2 style=" letter-spacing:0.03rem;line-height: 1.3; font-size: 1.75rem">Webdesign ressources</h2>
+    <div
+    class="img-block"
+    style="overflow: hidden; margin-top: 2rem; border-radius: 0.5rem !important;">
+      <a style="color: inherit; text-decoration: none;" href="https://studyhall.design/about">
+        <img
+          style="max-width: 100%; object-fit: cover;
+            display: block;"
+          src="https://i.imgur.com/twfNOSU.jpg"
+          alt="The Material Web Components website : a landing page explaining what is Material UI."
+        />
+      </a>
     </div>
+    <h3 style="border-radius: 0.25rem;font-size: 1.3rem; background-color: #fcfcfc; color:#00537c; padding: 0.4rem; margin-top: 1rem !important; line-height: 1.3">1. Google just released Material Web Components</a></h3>
+    <p style="display: block; margin-top: 1rem !important; line-height: 1.5"><strong>Why it's interesting</strong> — Material Web is a library of web components that follows Google's Material Design guidelines. Web components are custom HTML elements with encapsulated styles and behavior. They work across many different frameworks (such as Lit, React, Vue, and Svelte) as well as web environments (such as Eleventy, Wordpress, and Ruby on Rails). Very rare are the UI Library that don't use a CSS Framework like Tailwind or Bootstrap. Here each components is vanilla CSS, it keeps the maintenance and styles much simpler and sustainable. Every component is coherent and there are no CSS hacks in sight</p>
+    <a style="margin-top: 1rem;width: max-content;display: block;margin-left: auto; margin-right: auto; text-align: center; padding-left: 0.6rem; color: inherit; padding-right: 0.6rem; padding-top: 0.2rem; padding-bottom: 0.2rem; font-weight: 600; border:1px ridge #fcfcfc; border-radius: 0.25rem; text-decoration: none" target="_blank" href="https://material-web.dev/about/intro/">Go test it ↗</a>
+  <div
+    class="img-block"
+    style="overflow: hidden; margin-top: 2rem; border-radius: 0.5rem !important;">
+      <a style="color: inherit; text-decoration: none;" href="https://phosphoricons.com/">
+        <img
+          style="max-width: 100%; object-fit: cover;
+            display: block;"
+          src="https://i.imgur.com/L0ljvzH.jpg"
+          alt="Phosphor icons set"
+        />
+      </a>
+    </div>
+    <h3 style="border-radius: 0.25rem;font-size: 1.3rem; background-color: #fcfcfc; color:#00537c; padding: 0.4rem; margin-top: 1rem !important; line-height: 1.3">2. Phosphor icons</a></h3>
+    <p style="display: block; margin-top: 1rem !important; line-height: 1.5"><strong>Why it's interesting</strong> — These icons feels polished and modern. The website doesn't require to have an account to get the icons and it's 100% free. Integration is really easy with native Web, React, Flutter copy/paste. Almost all icons comes with 6 styles from Thin to Duotone. The icons feel great on UI elements or event att greater sizes.</p>
+    <a style="margin-top: 1rem;width: max-content;display: block;margin-left: auto; margin-right: auto; text-align: center; padding-left: 0.6rem; color: inherit; padding-right: 0.6rem; padding-top: 0.2rem; padding-bottom: 0.2rem; font-weight: 600; border:1px ridge #fcfcfc; border-radius: 0.25rem; text-decoration: none" target="_blank" href="https://material-web.dev/about/intro/">Let's see the icons ↗</a>
+</div>
+<div
+    class="block"
+    style="margin-top: 1rem !important;
+            background-color: #465400 !important;
+            border-radius: 1.5rem !important;
+            padding: 2rem !important;"
+  >
+    <h2 style="letter-spacing:0.03rem;line-height: 1.3; font-size: 1.75rem">And that's all for this month !</h2>
+    <p style="display: block; margin-top: 1rem !important; line-height: 1.5">If you liked this issue, please consider <strong>forwarding, sharing on social media</strong>. You can also follow me on <a style="color: inherit; text-underline-offset: 0.2rem; text-decoration-thickness: 0.1rem" href="https://twitter.com/teotimepacreau">Twitter</a>, <a style="color: inherit; text-underline-offset: 0.2rem; text-decoration-thickness: 0.1rem" href="https://www.teotimepacreau.fr/">my website</a>, <a style="color: inherit; text-underline-offset: 0.2rem; text-decoration-thickness: 0.1rem" href="https://github.com/teotimepacreau">Github</a></p>
+</div>
+  <a
+    class="block"
+    style="font-size: 1rem; opacity: 0.7;display: block; margin-top: 1rem; text-align: center; color: rgb(45, 45, 45); text-underline-offset: 0.2rem; text-decoration-thickness: 0.1rem"
+    href="http://localhost:3000/unsubscribe"
+    target="_blank"
+  >Unsubscribe from this newsletter</a>
+</div>

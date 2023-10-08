@@ -1,236 +1,432 @@
-/* CSS RESET */
 /* Box sizing rules */
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+   margin: 0; 
+   padding: 0;
 }
 
-/* Remove default list styles */
-ul, ol, li {
+/* Prevent font size inflation */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+   scroll-behavior: smooth;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+body, h1, h2, h3, h4, p,
+figure, blockquote, dl, dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
   list-style: none;
 }
 
 /* Set core body defaults */
 body {
-  text-rendering: optimizeLegibility;
-}    
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
 
-/* Set core root defaults */
-html {
-  scroll-behavior: smooth;
+/* Set shorter line heights on headings and interactive elements */
+h1, h2, h3, h4 {
+  line-height: 1.3;
 }
-    
-/* A element that don't have a class get default styles */
-a:not([class]) {
-  text-decoration-skip-ink: auto;
+
+/* Balance text wrapping on headings */
+h1, h2,
+h3, h4 {
+  text-wrap: balance;
 }
-    
+
+/* A elements that don't have a class get default styles */
+a {
+  color: currentColor;
+  text-underline-offset: 0.3ex;
+}
+
+button { 
+   cursor: pointer; 
+ }
+
 /* Make images easier to work with */
 img,
 picture {
-  max-width: 100%; /* img should never overflow past the available space*/
-  display: block; /* avoid blank bottom*/
-  height: auto;/*preserve aspect ratio*/
+  max-width: 100%;
+  display: block;
 }
 
-/* More consistent, styleable hr*/
-hr {
-  border-width: 1px 0 0 0;
-  color: inherit;
-  height: 0;
-  overflow: visible;
-}
-
-/* Remove built-in form typography styles */
-input, button, textarea, select {
+/* Inherit fonts for inputs and buttons */
+input, button,
+textarea, select {
   font: inherit;
-  color: inherit;
 }
 
-/* More space above the underline */
-a {
-  text-underline-offset: 0.2ex;
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+  min-height: 10rem;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 5ex;
+}
+
+/* More consistent, styleable hr*/ 
+ hr { 
+   border-width: 1px 0 0 0; 
+   color: inherit; 
+   height: 0; 
+   overflow: visible; 
+ }
+
+*:focus-visible{
+  transition: box-shadow 0.3s ease;
+  outline: 3px chartreuse solid;
+  box-shadow: 0 0 7px 0px chartreuse;
+}
+
+/* FOCUS ON LIGHT BACKGROUNDS  */
+/* *:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px hsla(210, 52%, 42%, 1.00), 
+              0 0 0 .6rem hsla(200, 72%, 83%, 0.75);
+} */
+
+button:focus-visible{
+  outline-offset: 0.8ex;
+}
+
+a:focus-visible{
+  outline-offset: 0.8ex;
+  box-shadow: none;
 }
 
 :root {
-  --bg10: oklch(10% 0.4 37);
-  --bgaccent: oklch(10% 1.1 150);
-  --bgshadow: oklch(9% 0.4 37 / 30%);
-  --body: oklch(95% 0.03 37);
-  --body98: oklch(90% 0.03 37);
-  --orange: oklch(70% 0.3 85);
-  --grey60: oklch(50% 0 0 / 60%);
-  --grey80: oklch(50% 0 0 / 80%);
+  --darkbg: oklch(12% 0.05 120);
+  --primary: oklch(42% 0.19 120);
+  --onprimary: oklch(99% 0 120);
+  --primaryicon: oklch(42% 0.19 120);
+  --primaryshadow: oklch(25% 0 120 / 35%);
+  --secondary: oklch(42% 0.19 80);
+  --tertiary: oklch(42% 0.19 240);
+  --fourth: oklch(42% 0.19 320);
+  --grey: oklch(50% 0.09 120 / 80%);
+  --white70opacity: oklch(100% 0 120 / 70%);
+  --white: oklch(100% 0 120);
+  --orange: oklch(90% 0.37 85 / 85%);
+  --orangeshadow:oklch(80% 0.3 85 / 55%);
+  --yellow: oklch(87.82% 0.1933 115.55);
+  --green: oklch(20% 0.3 140);
+  --focus: oklch(70% 0.19 80);
   --rythme: 1rem;
 }
-body{
-  font-family: "LibreCaslonCondensed-Regular";
-  background-color: var(--bg10);
-  color: var(--body);
-  min-height: 100dvh;
-  display: grid;
-  align-items: center;
+
+@font-face {
+  font-family: 'FixelVariable';
+  src: local("FixelVariable"),
+  url("/fonts/FixelVariable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-stretch: 87.501% 100%;
+  font-display: swap;
 }
 
-.container {
-  padding: calc(3*var(--rythme));
+body {
+  background-color: var(--darkbg);
+  font-family: 'FixelVariable', sans-serif;
+  color: var(--onprimary);
 }
+
+/* TYPO */
+h1 {
+  font-size: calc(2*var(--rythme) + 1vmin);
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: -0.01rem;
+}
+
+h2 {
+  letter-spacing: 0.04rem;
+  font-size: calc(1.5*var(--rythme));
+  line-height: 1.3;
+}
+
+p {
+  line-height: 1.5;
+}
+
+p, li, a {
+  font-size: 1.1rem;
+}
+
+/* PAGE SUBSCRIBE */
+
+/* components reutilisable */
+
+*:focus-visible{
+  transition: box-shadow 0.3s ease;
+  outline: 2px var(--focus) solid;
+  box-shadow: 0 0 5px 1px var(--focus);
+}
+
+button:focus-visible{
+  outline-offset: 0.8ex;
+}
+
+a:focus-visible{
+  outline-offset: 0.8ex;
+  box-shadow: none;
+}
+
+
+.divider {
+  height: 1px;
+  width: 100%;
+  border-top: 2px ridge var(--onprimary);
+}
+
+/* layout */
+.container {
+  padding: var(--rythme);
+  min-height: 100dvh;
+}
+
+.bento {
+  padding: calc(2*var(--rythme));
+  border-radius: calc(1.5*var(--rythme));
+  box-shadow: -1px 1px 20px 1px var(--primaryshadow);
+}
+
+/* SUBSCRIBE PAGE */
 
 #subscribe-page {
+  max-height: 100dvh;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: max-content auto;
+  gap: calc(0.5*var(--rythme));
+}
+
+/* Title bento */
+#title-bento {
+  grid-column: 1 / 3;
+  grid-row: 1 / 2;
+  background-color: var(--primary);
+  border: 1px ridge var(--primary);
+  color: var(--onprimary)
+}
+
+#title-bento > :not(:first-child){
+  margin-top: var(--rythme);
+}
+
+#title-bento i {
+  font-size: calc(4*var(--rythme));
+  padding: var(--rythme);
+  background-color: var(--onprimary);
+  border-radius: 10%;
+  color: var(--primaryicon);
+  box-shadow: -1px 1px 10px 3px var(--primaryshadow);
+}
+
+#title-bento-flex-bottom{
   display: flex;
-  flex-wrap: wrap;
-  gap: calc(3*var(--rythme));
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--rythme);
+  padding-top: var(--rythme);
 }
 
-#subscribe-page > * {
-  flex: 1 1 500px;
+#title-bento h1,p{
+  max-width: 60ch;
 }
 
-@font-face {
-  font-family: "LibreCaslonCondensed-Regular";
-  src: local("LibreCaslonCondensed-Regular"),
-  url("../fonts/LibreCaslonCondensed-Regular.woff2") format("woff2");
+/* Form bento */
+
+#form-bento {
+  background-color: var(--tertiary);
+  grid-column: 3 / 4;
+  grid-row: 1 / 3;
+  display: flex;
+  gap: calc(2*var(--rythme));
 }
 
-@font-face {
-  font-family: "LibreCaslonCondensed-Italic";
-  src: local("LibreCaslonCondensed-Italic"),
-  url("../fonts/LibreCaslonCondensed-Italic.woff2") format("woff2");
+#form-bento > * {
+  flex: 1 1 50%;
 }
 
-h1 {
-  font-size: 6rem;
-  font-family: "LibreCaslonCondensed-Regular", serif;
-  line-height: 1.4;
-  font-weight: 100;
-  letter-spacing: -0.02rem;
-}
-
-.italic-letters {
-  font-family: "LibreCaslonCondensed-Italic", serif;
+#form-bento-left img {
+  max-width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-view-box: inset(20% 50% 0% 0%);
+  border-radius: 0.3rem;
+  box-shadow: -1px 1px 4px 2px var(--primaryshadow);
 }
 
 #myForm {
-  width: clamp(300px, 60% - 10vw ,50ch);
-  margin-inline: auto;
-  font-family: 'Syne', sans-serif;
-  font-weight: 100;
-  background-color: var(--body);
-  color: var(--bg10);
-  padding-block: calc(2*var(--rythme));
-  padding-inline: calc(1.2*var(--rythme));
-  border-radius: 0.3rem;
-  box-shadow: -2px 2px 4px 4px var(--bgshadow);
-}
-.flex-wrapper{
+  color: var(--onprimary);
+  width: min-content;
+  justify-self: right;
   display: flex;
   flex-direction: column;
   gap: calc(2*var(--rythme));
 }
 
-.flex-wrapper > * {
-  display: flex;
-  flex-direction: column;
-  gap: calc(0.5*var(--rythme));
-}
-
-#myForm label {
-  font-size: 1.7rem;
-  font-weight: 300;
-  letter-spacing: -0.02rem;
-}
-#myForm input {
+input {
+  line-height: unset;
   appearance: none;
 	border: none;
 	outline: none;
-	border-bottom: .2em solid var(--bgaccent);
-	border-radius: .2em .2em 0 0;
-	padding: .4em;
-	color: var(--bgaccent);
+	border-bottom: .2rem solid var(--white);
+	border-radius: .1rem .1rem;
+	padding: .2rem .6ch;
+  padding-bottom: 0rem;
+  background-color: var(--white70opacity);
+  color: var(--tertiary);
+  font-weight: 500;
 }
 
-#myForm input:focus, textarea:focus, select:focus{
-  outline-width: 0.1ex;
-  outline-style: ridge;/*follow the border without white px*/
-  outline-color: var(--bgaccent);
+.label-and-input {
+  display: flex;
+  flex-direction: column;
+  gap: calc(0.25*var(--rythme));
 }
 
 #submit-btn{
-  box-shadow: -1px 1px 4px 2px var(--bgshadow);
-  display: flex;
-  flex-wrap: nowrap;
-  font-family: "LibreCaslonCondensed-Regular";
-  font-size: 2rem;
-  background-color: var(--bgaccent);
-  color: var(--body);
-  font-weight: 100;
-  min-width: calc(0.5*var(--rythme));
+  font-size: 1.25rem;
+  text-wrap: balance;
+  line-height: normal;
+  font-family: "FixelVariable", sans-serif;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: var(--rythme);
+  text-align: left;
+  box-shadow: -1px 1px 5px 1px var(--primaryshadow);
+  background-color: var(--onprimary);
+  color: var(--primary);
+  min-width: var(--rythme);
   cursor: pointer;
-  border: 0.1ex solid;
+  border: 1px ridge var(--onprimary);
   border-color: transparent;
-  padding: 1ex 2ex;/*hauteur des minuscules souvent appelée hauteur "x" lowercase*/
-  border-radius: 0.6rem;
+  padding: 1rem;
+  border-radius: 1rem;
   transition: background-color 0.3s ease-out;
 }
-#submit-btn > *{
-  margin-left: auto;
+
+#submit-btn i {
+  font-size: calc(1.5*var(--rythme));
+  padding: 0.75rem;
+  border-radius: 50%;
+  background-color: var(--primaryicon);
+  color: var(--onprimary);
 }
 
-#submit-btn p {
-  font-weight: 600;
-}
 #submit-btn:hover {
-  background-color: var(--body);
-  color: var(--bgaccent);
-  border-color: var(--bgaccent);
+  background-color: var(--primary);
+  color: var(--onprimary);
+  border-color: var(--onprimary);
 }
 
-button:focus {
-  outline-width: 0.1ex;
-  outline-offset: 0.2ex;
-  outline-style: solid;
-  outline-color: var(--bgaccent);
-  transition: all 0.3s ease-out;
+#submit-btn:hover i {
+  background-color: var(--onprimary);
+  color: var(--primary);
 }
 
-i:hover{
-  color: var(--accent);
+
+#myForm nav {
+  margin: 0;
+  padding: 0;
 }
+
 #unsubscribe-link{
-  display: inline-block;
-  margin-top: var(--rythme);
-  color: var(--grey60);
-  text-underline-offset: 0.4ex;
+  color: var(--onprimary);
+  transition: text-underline-offset 0.1s ease;
+  opacity: 0.8;
 }
+
 #unsubscribe-link:hover{
-  background-color: var(--body98);
-  padding: 0.5ex;
-  transition: all 0.3s ease-out;
-  border-radius: 0.3rem;
-  color: var(--grey80);
+  text-underline-offset: 0.4ex;
+  text-decoration-thickness: 0.4ex;
 }
+
+/* Image bento */
+
+#image-bento {
+  background-color: var(--secondary);
+  border: 1px ridge var(--secondary);
+}
+
+/* Issues bento */
+
+#issues-bento {
+  background-color: var(--primary);
+  border: 1px ridge var(--primary);
+}
+
+#issues-bento > :not(:first-child) {
+  margin-top: var(--rythme);
+}
+
+#issues-flexer {
+  padding-block: var(--rythme);
+  display: flex;
+  flex-direction: column;
+  gap: calc(2*var(--rythme));
+}
+
+#issues-flexer li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--rythme);
+  margin-top: var(--primary);
+}
+
+#issue-name {
+  min-width: max-content;
+  font-weight: 600;
+  flex-shrink: 0;
+  line-height: 1;
+  padding: 0.5rem;
+  padding-top: 1rem;
+  background-color: var(--onprimary);
+  color: var(--primaryicon);
+  border-radius: 0.3rem;
+}
+
+#issue-divider {
+  border-top: 1px ridge var(--onprimary);
+}
+
+
 /* NOTIF TO CONFIRM THAT USER HAS SUCCESSFULLY SENT FORM */
+
 .notif {
+  font-weight: 500;
   display: flex;
   align-items: center;
   gap: 0.5ch;
   position: absolute;
-  right: var(--rythme);
-  bottom: var(--rythme);
-  font-family: "Syne", sans-serif;
+  right: calc(2*var(--rythme));
+  bottom: calc(3*var(--rythme));
   padding: calc(0.5*var(--rythme));
   border-radius: 0.3rem;
   animation: fade 0.6s ease-out;
-  box-shadow: -2px 2px 5px 0px var(--boxshadow);
+  box-shadow: -2px 2px 5px 0px var(--primaryshadow);
   transition: all 0.3s ease-out;
+  opacity: 0.95;
 }
 
 .subscribed-successfully {
-  background-color: var(--body);
-  color: var(--bg10);
+  background-color: var(--white);
+  color: var(--green);
 }
 
 @keyframes fade {
@@ -248,97 +444,215 @@ i:hover{
 
 .email-already-exists {
   background-color: var(--orange);
-  color: var(--body);
+  color: var(--darkbg);
 }
 
-/* UNSUBCRIBE */
-#unsubscribe-container {
-  max-width: 50%;
-  margin-top: calc(3*var(--rythme));
-  padding: var(--rythme);
-  background-color: var(--body);
-  color: var(--bg10);
+/* CONTAINER QUERIES */
+#form-bento {
+  container-type: inline-size;
+  container-name: form-bento;
+}
+@container form-bento (width < 400px){
+  #form-bento-left{
+    display: none
+  }
+}
+
+#title-bento {
+  container-type: inline-size;
+  container-name: title-bento;
+}
+
+@container title-bento (width < 500px){
+  #title-bento-flex-bottom{
+    flex-direction: column;
+  }
+  #title-bento-flex-bottom > *{
+    flex: 1 1;
+  }
+  #icon {
+    display: flex;
+    justify-content: right;
+    width: 100%;
+    padding: unset;
+    border-radius: 0.3rem;
+    background-color: var(--onprimary);
+    opacity: 0.9;
+  }
+  #icon i {
+    box-shadow: unset;
+    padding: 0.2rem;
+  }
+}
+
+/* MEDIA QUERIES */
+@media (width < 900px){
+  #subscribe-page {
+    display: flex;
+    flex-direction: column;
+  }
+  #title-bento{
+    order: 0;
+  }
+  #form-bento{
+    order: 1;
+  }
+  #image-bento{
+    order: 2;
+  }
+  #issues-bento{
+    order: 3;
+  }
+}
+
+
+/* PAGE UNSUBCRIBE */
+
+#unsub-page {
   display: grid;
-  grid-template-columns: 50% 50%;
-  column-gap: calc(2*var(--rythme));
-  font-family: "Syne", sans-serif;
-  border-radius: 0.3rem;
+  grid-template-columns: 1fr 1fr;
+  padding: 0;
+  align-items: start;
+  min-height: unset;
 }
 
-#unsubscribe-container .ph-envelope-open {
-  font-size: calc(10*var(--rythme));
-  align-self: center;
-  justify-self: center;
+#unsub-hero-section{
+  height: 100dvh;
+  position: sticky;
+  top: 0;
 }
 
-#unsubscribe-container form {
+#unsub-img img{
+  width: 100%;
+  max-height: 100dvh;
+  object-fit: cover;
+  display: block;
+}
+
+#unsub-bentos-section {
+  padding: calc(2*var(--rythme));
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: auto;
+  row-gap: var(--rythme);
+}
+
+#unsub-title {
+  padding-bottom: var(--rythme);
+}
+
+#unsub-form-bento {
   grid-column: 2 / 3;
+  grid-row: 2 /3;
+  background-color: var(--tertiary);
 }
 
-#unsubscribe-form input:focus, textarea:focus, select:focus{
-  outline-width: 0.1ex;
-  outline-style: ridge;/*follow the border without white px*/
-  outline-color: var(--bgaccent);
-}
-
-#unsubscribe-container h2 {
-  text-wrap: balance;
-  font-weight: 400;
-  max-width: 25ch;
-}
-
-#unsubscribe-container-right {
+#unsubscribe-form {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  max-width: max-content;
-}
-
-#unsubscribe-container-right button {
-  margin-top: var(--rythme);
-}
-
-#unsubscribe-email-section {
-  margin-top: var(--rythme);
-  display: flex;
-  flex-direction: column;
-  gap: calc(0.25*var(--rythme));
-}
-
-
-#unsubscribe-email-section input {
-  appearance: none;
-	border: none;
-	outline: none;
-	border-bottom: .2em solid var(--bgaccent);
-	border-radius: .2em .2em 0 0;
-	padding: .4em;
-	color: var(--bgaccent);
+  gap: calc(2*var(--rythme));
 }
 
 #unsubscribe-btn {
-  box-shadow: -1px 1px 2px 0.5px var(--bgshadow);
+  text-align: left;
+  font-size: 1.25rem;
+  box-shadow: -1px 1px 2px 0.5px var(--primaryshadow);
+  font-family: "FixelVariable", sans-serif;
+  font-weight: 700;
   display: flex;
-  gap: 1ch;
-  font-size: 1rem;
+  align-items: center;
+  gap: 1rem;
   align-items: center;
   justify-content: center;
-  background-color: var(--bgaccent);
-  color: var(--body);
-  font-weight: 100;
+  background-color: var(--onprimary);
+  color: var(--tertiary);
   min-width: calc(0.5*var(--rythme));
   cursor: pointer;
   border: 0.1ex solid;
   border-color: transparent;
-  padding: 1ex 2ex;/*hauteur des minuscules souvent appelée hauteur "x" lowercase*/
-  border-radius: 0.3rem;
+  padding: 1rem;/*hauteur des minuscules souvent appelée hauteur "x" lowercase*/
+  border-radius: 1rem;
   transition: background-color 0.3s ease-out;
 }
 
 #unsubscribe-btn:hover {
-  background-color: var(--body);
-  border-color: var(--bgaccent);
+  background-color: var(--tertiary);
+  border-color: var(--onprimary);
   color: var(--bgaccent);
-  font-weight: 500;
 }
 
+#unsub-backtosubscribe-bento {
+  grid-column: 2 / 3;
+  grid-row: 4 / 5;
+  background-color: var(--secondary);
+  display: flex;
+  gap: var(--rythme);
+  align-items: center;
+  justify-content: space-between;
+}
+
+#unsub-backtosubscribe-bento #backlink-icon {
+  text-decoration: none;
+}
+
+#unsub-backtosubscribe-bento i {
+  font-size: calc(2.5*var(--rythme));
+  padding: calc(0.5*var(--rythme));
+  background-color: var(--onprimary);
+  border-radius: 10%;
+  color: var(--secondary);
+  box-shadow: -1px 1px 5px 2px var(--primaryshadow);
+  transition: all 0.3s ease;
+}
+
+#unsub-backtosubscribe-bento i:hover{
+  color: var(--onprimary);
+  background-color: var(--secondary);
+  border: 1px solid var(--onprimary);
+}
+
+#link-go-to-subscribe{
+  transition: text-underline-offset 0.1s ease;
+}
+
+#link-go-to-subscribe:hover {
+  text-underline-offset: 0.4ex;
+  text-decoration-skip-ink: none;
+  text-decoration-thickness: 0.4ex;
+}
+
+#unsub-content-bento {
+  grid-column: 1 / 2;
+  grid-row: 3 / 4;
+  background-color: var(--primary);
+}
+
+#unsub-content-bento > :not(:first-child) {
+  margin-top: var(--rythme);
+}
+
+
+/* MEDIA QUERIES */
+@media (width < 1300px){
+  #unsub-hero-section{
+    display: none;
+  }
+  #unsub-page{
+    display: unset;
+  }
+  #unsub-bentos-section{
+    display: flex;
+    flex-direction: column;
+    max-width: 60ch;
+    margin-inline: auto;
+  }
+  #unsub-form-bento{
+    order: 1;
+  }
+  #unsub-content-bento{
+    order: 2;
+  }
+  #unsub-backtosubscribe-bento{
+    order: 3;
+  }
+}

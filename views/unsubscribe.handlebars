@@ -1,23 +1,59 @@
-<div class="container">
-    <h1>The 35mm <span class="italic-letters">Newsletter</span></h1>
-    <div id="unsubscribe-container">
-        <i class="ph ph-envelope-open"></i>
-        <div id="unsubscribe-container-right">
-            <h2>Are you sure you want to unsubscribe ? It's not the same without you...</h2>  
-            <form id="unsubscribe-form" method="POST" action="/unsubscribe">
-                <div id="unsubscribe-email-section">
-                    <label for="unsubscribe-email">E-mail</label>
-                    <input autocomplete="on" type="email" id="unsubscribe-email" name="email" required>
-                    <button type="submit" id="unsubscribe-btn">
-                        <i class="ph ph-hand-waving"></i>
-                        <div class="inner-btn">
-                            <span>Unsubscribe from Newsletter</span>
-                        </div>
-                    </button>
-                </div>
-            </form>
-            <a id="unsubscribe-link" href="/subscribe">Go back to subscription page</a>
-        </div>  
+<main class="container" id="unsub-page">
+  <section id="unsub-hero-section">
+    <div id="unsub-img">
+      <img src="images/city.png" alt="" />
     </div>
-</div>
-<script src="/javascripts/frontHandleUnsub.js"></script><!-- sait automatiquement que c'est dans le folder public car précisé dans app.js-->
+  </section>
+  <section role="region" id="unsub-bentos-section">
+    <div id="unsub-title">
+      <h1>The <span style="background-color: var(--onprimary); color:var(--darkbg);font-weight: 900; font-stretch: 100%; padding-inline: 1rem;padding-block: 0.5rem;padding-bottom:0rem; border-radius: 0.3rem">Feuillu</span> newsletter</h1>
+    </div>
+    <div class="bento" id="unsub-form-bento">
+      <form id="unsubscribe-form" method="POST" action="/unsubscribe">
+        <h2>Want to unsubscribe ?</h2>
+        <div class="label-and-input">
+          <label for="unsubscribe-email">E-mail</label>
+          <input
+          autocomplete="on"
+          type="email"
+          id="unsubscribe-email"
+          name="email"
+          required
+          />
+        </div>
+        <button type="submit" id="unsubscribe-btn">
+          <i class="ph ph-hand-waving"></i>
+          <div class="inner-btn">
+            <span>Unsubscribe from Newsletter</span>
+          </div>
+        </button>
+      </form>
+    </div>
+    <nav class="bento" id="unsub-backtosubscribe-bento">
+      <a id="backlink-icon" href="/subscribe">
+        <i class="ph ph-arrow-circle-left"></i>
+      </a>
+      <a id="link-go-to-subscribe" href="/subscribe">Go back to subscription page</a>
+    </nav>
+    <div class="bento" id="unsub-content-bento">
+      <h2>Past issues</h2>
+        <div class="divider"></div>
+        <ol id="issues-flexer">
+            <li><time>15/10/23</time><div class="divider" id="issue-divider"></div><a target="_blank" href="/issue" id="issue-name">Arasaka</a></li>
+        </ol>
+    </div>
+  </section>
+</main>
+<script
+  src="/javascripts/frontHandleUnsub.js"
+></script><!-- sait automatiquement que c'est dans le folder public car précisé dans app.js-->
+<script type="speculationrules">
+{
+  "prerender": [
+    {
+      "source": "list",
+      "urls": ["subscribe"]
+    }
+  ]
+}
+</script>
