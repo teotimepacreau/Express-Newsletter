@@ -363,6 +363,11 @@ input {
   border: 1px ridge var(--secondary);
 }
 
+#video-showcase {
+  max-width: 100%;
+  height: 100%;
+}
+
 /* Issues bento */
 
 #issues-bento {
