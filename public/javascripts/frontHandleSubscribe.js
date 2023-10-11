@@ -1,3 +1,6 @@
+// VIDEO SPEED
+document.querySelector('video').playbackRate = 0.7;
+
 // SUBSCRIBING
 document.getElementById('myForm').addEventListener('submit', async function(event) {
     event.preventDefault();

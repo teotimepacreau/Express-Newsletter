@@ -192,7 +192,6 @@ a:focus-visible{
 /* layout */
 .container {
   padding: var(--rythme);
-  min-height: 100dvh;
 }
 
 .bento {
@@ -204,10 +203,11 @@ a:focus-visible{
 /* SUBSCRIBE PAGE */
 
 #subscribe-page {
-  max-height: 100dvh;
+  margin-block: auto;
+  height: 100dvh;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: max-content auto;
+  grid-template-rows: max-content 1fr;
   gap: calc(0.5*var(--rythme));
 }
 
@@ -256,7 +256,7 @@ a:focus-visible{
 }
 
 #form-bento > * {
-  flex: 1 1 50%;
+  flex: 0 1 50%;
 }
 
 #form-bento-left img {
@@ -270,7 +270,6 @@ a:focus-visible{
 
 #myForm {
   color: var(--onprimary);
-  width: min-content;
   justify-self: right;
   display: flex;
   flex-direction: column;
@@ -358,9 +357,21 @@ input {
 
 /* Image bento */
 
-#image-bento {
+#video-bento {
   background-color: var(--secondary);
   border: 1px ridge var(--secondary);
+}
+
+#video-container{
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+#video-showcase {
+  max-width: 100%;
+  height: 100%;
+  object-fit: scale-down;
+  aspect-ratio: 4 / 3;
 }
 
 /* Issues bento */
@@ -456,6 +467,9 @@ input {
   #form-bento-left{
     display: none
   }
+  #form-bento > * {
+    flex: unset;
+  }
 }
 
 #title-bento {
@@ -490,6 +504,7 @@ input {
   #subscribe-page {
     display: flex;
     flex-direction: column;
+    height: unset;
   }
   #title-bento{
     order: 0;
@@ -497,11 +512,14 @@ input {
   #form-bento{
     order: 1;
   }
-  #image-bento{
+  #video-bento{
     order: 2;
   }
   #issues-bento{
     order: 3;
+  }
+  #video-showcase{
+    aspect-ratio: unset;
   }
 }
 
