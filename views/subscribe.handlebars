@@ -9,10 +9,11 @@
             </div>
         </div>
     </section>
-    <section class="bento" id="image-bento">
-        <video id="video-showcase" autoplay muted loop playsinline src="images/newslettervideo.mp4" alt="displaying the newsletter in a smartphone frame">
-        </video>
-
+    <section class="bento" id="video-bento">
+        <div id="video-container">
+            <video id="video-showcase" autoplay muted loop playsinline src="images/video.mp4" alt="displaying the newsletter in a smartphone frame">
+            </video>
+        </div>
     </section>
     <section class="bento" id="issues-bento">
         <h2>Past issues</h2>
@@ -22,9 +23,9 @@
         </ol>
     </section>
     <section role="region" class="bento" id="form-bento">
-        <figure id="form-bento-left">
+        <div id="form-bento-left">
             <img src="images/city.png" alt="">
-        </figure>
+        </div>
         <form id="myForm" method="POST" action="/subscribe">
             <div class="label-and-input">
                 <label for="form-firstname">Firstname</label>
