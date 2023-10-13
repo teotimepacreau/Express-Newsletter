@@ -6,6 +6,15 @@
 app = "feuillu-newsletter"
 primary_region = "cdg"
 
+
+[env]
+  DATABASE_URL = "file:/data/sqlite.db"
+  PORT = "3000"
+
+[mounts]
+  destination = "/data"
+  source = "data"
+
 [build]
   command = "npm install"
   environment = ["NODE_ENV=production"]
@@ -18,9 +27,6 @@ primary_region = "cdg"
   destination = "/app/.env"
   type = "file"
 
-[[mounts]]
-  source = "data"
-  destination = "/data"
 
 [http_service]
   internal_port = 8080
