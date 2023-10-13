@@ -1,4 +1,4 @@
-# fly.toml app configuration file generated for feuillu-newsletter on 2023-10-11T16:24:01+02:00
+# fly.toml app configuration file generated for feuillu-newsletter on 2023-10-12T20:24:52+02:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
@@ -7,13 +7,23 @@ app = "feuillu-newsletter"
 primary_region = "cdg"
 
 [build]
+  command = "npm install"
+  environment = ["NODE_ENV=production"]
+
+[build.env]
+  NODE_ENV = "production"
+
+[build.mounts]
+  source = ".env"
+  destination = "/app/.env"
+  type = "file"
 
 [[mounts]]
   source = "data"
   destination = "/data"
 
 [http_service]
-  internal_port = 3000
+  internal_port = 8080
   force_https = true
   auto_stop_machines = true
   auto_start_machines = true
