@@ -208,7 +208,7 @@ a:focus-visible{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: max-content 1fr;
-  gap: calc(0.5*var(--rythme));
+  gap: var(--rythme);
 }
 
 /* Title bento */
@@ -362,9 +362,16 @@ input {
   border: 1px ridge var(--secondary);
 }
 
+#video-container{
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
 #video-showcase {
   max-width: 100%;
   height: 100%;
+  object-fit: scale-down;
+  aspect-ratio: 4 / 3;
 }
 
 /* Issues bento */
@@ -523,7 +530,7 @@ input {
   display: grid;
   grid-template-columns: 1fr 1fr;
   padding: 0;
-  align-items: start;
+  align-items: space-between;
   min-height: unset;
 }
 
@@ -613,13 +620,14 @@ input {
   border-radius: 10%;
   color: var(--secondary);
   box-shadow: -1px 1px 5px 2px var(--primaryshadow);
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease;
+  border: 2px solid transparent;
 }
 
 #unsub-backtosubscribe-bento i:hover{
   color: var(--onprimary);
   background-color: var(--secondary);
-  border: 1px solid var(--onprimary);
+  border: 2px solid var(--onprimary);
 }
 
 #link-go-to-subscribe{
