@@ -34,8 +34,7 @@ A fully functional newsletter website, where you can subscribe and receive a wel
 7. Scheduling Newsletter Sending:
 - Nodecron send newsletters at specific intervals.🚧
 8. Security Considerations: Implement data validation, sanitation, and encryption to protect user information. Prevent SQL injection and other security vulnerabilities.🚧
-9. Error Handling: Implement proper error handling and validation for user inputs and database operations.🚧
-10. Deploy on fly.io✅
-11. DB disaster recovery with filestream.io🚧
+9. Deploy on fly.io✅
+10. DB disaster recovery with filestream.io🚧
 
 
