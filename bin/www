@@ -3,7 +3,6 @@
 /**
  * Module dependencies.
  */
-
 var app = require('../app');
 var debug = require('debug')('app:server');
 var http = require('http');
@@ -11,7 +10,7 @@ var http = require('http');
 /**
  * Get port from environment and store in Express.
  */
-
+// POUR FLY.IO : nécessaire que ce soit un autre port que celui utilisé pour le dev local
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 

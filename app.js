@@ -72,3 +72,6 @@ const openDBandCreateTable = async () => {
     }
 
 openDBandCreateTable()
+
+// OBLIGATOIRE POUR le /bin/www afin qu'il puisse appeler app, sinon fait une erreur au fly deploy
+module.exports = app;
