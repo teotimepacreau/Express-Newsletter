@@ -1,6 +1,10 @@
 # Express-Newsletter
 A fully functional newsletter website, where you can subscribe and receive a welcoming email, and then receive periodically the newsletter. It also allows unsubscribing through a dedicated page.
 
+
+https://github.com/teotimepacreau/Express-Newsletter/assets/95431443/d6b3c398-e79c-48a6-b961-0542f5622d6c
+
+
 # 🛠️ Built with :
 - CSS : all UI design is from me, container queries, variable font, grid, flexbox... 
 - HTML : form best practice and validation, semantic...
