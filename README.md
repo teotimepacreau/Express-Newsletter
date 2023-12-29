@@ -33,7 +33,7 @@ A fully functional newsletter website, where you can subscribe and receive a wel
 6. Allowing the client to render the email in browser :
 - implemented a route that takes a query parameter to decide to render the "welcomeEmail" or the "newsletter" in a new tab.
 7. Scheduling Newsletter Sending:
-- Nodecron send newsletters at specific intervals.🚧
+- Nodecron can send newsletters every Saturday. Not activating the function to not pollute email boxes of people trying the deployed version.
 9. Deploy on fly.io
 
 
