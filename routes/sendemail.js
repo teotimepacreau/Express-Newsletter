@@ -75,7 +75,8 @@ const mailer = async ()=>{
       }
 }
 
-cron.schedule("0 19 * * 6", mailer)
+// NOT ACTIVATING THE CRONJOB TO NOT POLLUTE EMAIL BOXES, but if activated it would send the mail At 19:00 every Saturday
+// cron.schedule("0 19 * * 6", mailer)
 
 
 router.get("/", async (req, res) => {
